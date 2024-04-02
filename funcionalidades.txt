@@ -1,0 +1,20 @@
+FUNCIONALIDADES BÁSICAS A IMPLEMENTAR
+1. Inicio de Sesión
+	1.1. Ingreso con Google 
+2. Despliegue de menú de herramientas
+	2.1. Botón de Configuración
+	2.2. Botón de trabajo cooperativo
+	2.3. Botones de volver hacia atrás y adelante
+	2.4. Botón de búsqueda de carpetas por nombre 
+3. Trabajo cooperativo entre cuentas
+	3.1. Configuración de la cuenta
+	3.2. Compartir enlace de invitación a espacio de trabajo
+4. Herramientas principales de Chispanota
+	4.1. Escribir nota
+	4.2. Escribir lista
+	4.3. Nueva Columna
+	4.4. Insertar imagen
+	4.5. Editar Texto Seleccionado
+	4.6. Crear Carpeta
+	4.7. Click derecho
+5.Visualización en Móvil
