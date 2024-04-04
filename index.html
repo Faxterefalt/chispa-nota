@@ -6,75 +6,145 @@
     <title>Chispanota</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-        }
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+    }
 
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
+    header {
+      background-color: #452D9C;
+      color: #fff;
+      padding: 20px;
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+    }
 
-        nav {
-            background-color: #444;
-            color: #fff;
-            padding: 10px;
-            text-align: center;
-        }
+    .header-titulo {
+      flex: 1; 
+    }
 
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-        }
+    .header-titulo h1 {
+      margin: 0;
+      font-family: "Smallville", sans-serif;
+    }
 
-        nav ul li {
-            display: inline;
-            margin-right: 20px;
-        }
+    nav {
+      background-color: #444;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
 
-        section {
-            padding: 20px;
-        }
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
 
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
+    nav ul li {
+      display: inline;
+      margin-right: 20px;
+    }
+
+    section {
+      padding: 20px;
+    }
+
+    footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+/* Cambiar a otro color para dispositivos móviles */
+    @media screen and (max-width: 768px) {
+      header {
+        background-color: #452D9C; 
+      }
+      nav {
+        background-color: #666; 
+      }
+      nav ul li {
+        display: block;
+        margin-right: 0;
+        margin-bottom: 10px;
+      }
+    }
+
+    .menu-principal {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .acciones-usuario {
+      float: right;
+      margin-right: 20px;
+      margin-left: 20px;
+      padding: 10px;
+      font-size: 14px;
+      background-color: #B81D70;
+      font-family: "Impact", sans-serif;
+    }
+
+    .acciones-usuario a {
+      text-decoration: none;
+      color: #fff;
+      margin-right: 10px;
+    }
+
+    .acciones-usuario a:hover {
+      color: #ccc;
+    }
+    .contenido {
+    margin-bottom: 20px; 
+    }
+    .contenedor-flex {
+        display: flex;
+        justify-content: space-between;
+    }
+  </style>
 </head>
 <body>
 
-    <header>
-        <h1>Chispanota</h1>
-    </header>
+  <header>
+    <div class="header-titulo">
+      <h1>Chispanota</h1>
+    </div>
+    <!--<div class="menu-principal">
+      <ul>
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#">Acerca de</a></li>
+        <li><a href="#">Servicios</a></li>
+        <li><a href="#">Contacto</a></li>
+      </ul>
+    </div>-->
+    <div class="acciones-usuario">
+      <a href="#">Ingrese Aquí</a>
+   </div>
+    <div class="acciones-usuario">
+        <a href="login.html">Regístrate Gratis</a>
+        
+      </div>
+  </header>
 
-    <nav>
-        <ul>
-            <li><a href="#">Inicio</a></li>
-            <li><a href="#">Acerca de</a></li>
-            <li><a href="#">Servicios</a></li>
-            <li><a href="#">Contacto</a></li>
-        </ul>
-    </nav>
+  <section class="contenedor-flex">
+    <div class="contenido">
+      <img src="img/fondo1.png" alt="Fondo 1">
+    </div>
+    <div class="contenido">
+      <h2>Organízate, crea y diviértete</h2>
+      <p>Chispanota es una herramienta fácil e intuitiva que permite organizar tus ideas y proyectos de la mejor manera. </p>
+    </div>
+  </section>
 
-    <section>
-        <h2>Contenido Principal</h2>
-        <p>Bienvenido a mi página web. Aquí puedes añadir tu contenido principal.</p>
-    </section>
-
-    <footer>
-        <p>Derechos de autor &copy; 2024 - Chispanota</p>
-    </footer>
+  <footer>
+    <p>Derechos de autor &copy; 2024 - Chispanota</p>
+  </footer>
 
 </body>
 </html>
