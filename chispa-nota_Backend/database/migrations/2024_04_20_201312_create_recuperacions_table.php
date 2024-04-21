@@ -15,6 +15,13 @@ class CreateRecuperacionsTable extends Migration
     {
         Schema::create('recuperacions', function (Blueprint $table) {
             $table->id();
+            $table->string('tipo_recuperacion');
+            $table->date('inicio_recuperacion');
+            $table->date('vencimiento_recuperacion');
+            $table->boolean('estado');
+            $table->string('codigo');
+            $table->date('registro_acceso');
+            $table->date('registro_fallo');
             $table->timestamps();
         });
     }
