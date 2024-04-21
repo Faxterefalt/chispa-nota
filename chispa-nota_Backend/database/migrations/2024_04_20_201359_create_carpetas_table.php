@@ -15,6 +15,10 @@ class CreateCarpetasTable extends Migration
     {
         Schema::create('carpetas', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre_carp');
+            $table->text('descripcion_carp');
+            $table->date('fecha_creacion_carp');
+            
             $table->timestamps();
         });
     }

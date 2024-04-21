@@ -15,6 +15,10 @@ class CreateCuentasTable extends Migration
     {
         Schema::create('cuentas', function (Blueprint $table) {
             $table->id();
+            $table->string('login');
+            $table->string('password');
+            $table->date('fecha_creacion');
+            $table->date('fecha_fin');
             $table->timestamps();
         });
     }
