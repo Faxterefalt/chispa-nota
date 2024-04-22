@@ -21,6 +21,6 @@ class CuentasModel extends Model
     }
 
     public function recuperacion() {
-        return $this->hasOne(Recuperacion::class);
+        return $this->hasMany(Recuperacion::class);
     }
 }

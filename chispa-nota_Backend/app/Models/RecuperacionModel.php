@@ -13,6 +13,9 @@ class RecuperacionModel extends Model
     protected $fillable = [ 'tipo_recuperacion','inicio_recuperacion'
     ,'vencimiento_recuperacion','estado','codigo','registro_acceso'
     ,'registro_fallo','estado'];
-
+    public function cuenta()
+    {
+        return $this->belongsTo(Cuenta::class);
+    }
     
 }

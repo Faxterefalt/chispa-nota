@@ -15,6 +15,8 @@ class CreateRecuperacionsTable extends Migration
     {
         Schema::create('recuperacions', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('cuenta_id');
+            $table->foreign('cuenta_id')->references('id')->on('cuentas')->onDelete('cascade');        
             $table->string('tipo_recuperacion');
             $table->date('inicio_recuperacion');
             $table->date('vencimiento_recuperacion');

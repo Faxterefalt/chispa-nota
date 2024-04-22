@@ -15,6 +15,8 @@ class CreateCarpetasTable extends Migration
     {
         Schema::create('carpetas', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('cuenta_id'); 
+            $table->foreign('cuenta_id')->references('id')->on('cuentas')->onDelete('cascade');    
             $table->string('nombre_carp');
             $table->text('descripcion_carp');
             $table->date('fecha_creacion_carp');
