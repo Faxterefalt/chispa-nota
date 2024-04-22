@@ -36,3 +36,10 @@ Route::controller(CuentasController::class)->group(function(){
     Route::put('/cuentas/{id}', [CuentasController::class, 'update']);
     Route::delete('/cuentas/{id}', [CuentasController::class, 'destroy']);
 });
+Route::controller(CarpetasController::class)->group(function(){
+    Route::get('/carpetas', [CarpetasController::class, 'index']);
+    Route::post('/carpetas', [CarpetasController::class, 'store']);
+    Route::get('/carpetas/{id}', [CarpetasController::class, 'show']);
+    Route::put('/carpetas/{id}', [CarpetasController::class, 'update']);
+    Route::delete('/carpetas/{id}', [CarpetasController::class, 'destroy']);
+});
