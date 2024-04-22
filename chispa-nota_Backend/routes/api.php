@@ -43,3 +43,10 @@ Route::controller(CarpetasController::class)->group(function(){
     Route::put('/carpetas/{id}', [CarpetasController::class, 'update']);
     Route::delete('/carpetas/{id}', [CarpetasController::class, 'destroy']);
 });
+Route::controller(RecuperacionController::class)->group(function(){
+    Route::get('/recuperacion', [RecuperacionController::class, 'index']);
+    Route::post('/recuperacion', [RecuperacionController::class, 'store']);
+    Route::get('/recuperacion/{id}', [RecuperacionController::class, 'show']);
+    Route::put('/recuperacion/{id}', [RecuperacionController::class, 'update']);
+    Route::delete('/recuperacion/{id}', [RecuperacionController::class, 'destroy']);
+});
