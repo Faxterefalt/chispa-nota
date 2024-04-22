@@ -1,0 +1,7 @@
+  .contenido {
+  margin-bottom: 20px; 
+  }
+  .contenedor-flex {
+      display: flex;
+      justify-content: space-between;
+  }
