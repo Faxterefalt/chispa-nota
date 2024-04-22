@@ -20,7 +20,7 @@ class CreateCuentasTable extends Migration
             $table->string('login');
             $table->string('password');
             $table->date('fecha_creacion');
-            $table->date('fecha_fin');
+            $table->date('fecha_fin')->nullable();
             $table->timestamps();
         });
     }

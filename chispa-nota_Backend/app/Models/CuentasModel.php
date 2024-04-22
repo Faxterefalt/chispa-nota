@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class CuentasModel extends Model
 {
     use HasFactory;
-    protected $table = 'usuarios';
+    protected $table = 'cuentas';
 
-    protected $fillable = [ 'login','password','fecha_creacion','fecha_fin'];
+    protected $fillable = ['usuario_id','login','password','fecha_creacion','fecha_fin'];
 
 
     public function usuario() {
