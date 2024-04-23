@@ -1,0 +1,81 @@
+
+.header {
+  background-color: #452D9C;
+  color: white;
+  padding: 10px;
+}
+
+.header h1 {
+  margin: 0; 
+}
+.btn-container {
+  display: flex;
+}
+
+.header .btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  background-color: #B81D70; /* Color de fondo blanco */
+  color: #ffffff; /* Color de texto morado */
+  border: none;
+  border-radius: 5px;
+  font-family: "Impact", sans-serif;
+  margin-left: 10px; /* Agrega un margen entre los botones si es necesario */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Transición suave al pasar el ratón */
+}
+.header .btn:hover {
+  background-color: #D1C4E9; /* Color de fondo morado claro al pasar el ratón */
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra los elementos horizontalmente */
+}
+
+.half-container {
+  display: flex;
+  width: 100%;
+}
+
+.half {
+  flex: 1;
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+
+/* Estilos opcionales para los contenidos de las mitades */
+.half p {
+  margin: 0;
+  font-family: Helvetica, Arial, sans-serif;
+}
+.half .texto {
+  font-family: Helvetica, Arial, sans-serif;
+  text-align: justify;
+}
+
+.half1 {
+  background-image: url('../img/fondo1.png');
+
+
+  margin-top: auto;
+}
+
+.logo {
+  font-size: 3rem;
+  font-weight: bold;
+  font-family: "Impact", sans-serif;  
+  font-weight: bold;
+  text-align: center;
+}
+
+.tagline {
+  font-size: 1.5rem;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  text-align: center;
+}
+
+
