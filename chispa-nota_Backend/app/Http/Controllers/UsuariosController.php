@@ -18,14 +18,12 @@ class UsuariosController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'email' => 'required|email|unique:usuarios',
             'nombre_usu' => 'required|string',
             'apellido_pa_usu' => 'required|string',
             'apellido_ma_usu' => 'required|string',
         ]);
 
         $usuario = new UsuariosModel();
-        $usuario->email = $request->email;
         $usuario->nombre_usu = $request->nombre_usu;
         $usuario->apellido_pa_usu = $request->apellido_pa_usu;
         $usuario->apellido_ma_usu = $request->apellido_ma_usu;

@@ -1,4 +1,5 @@
   .contenido {
+  margin-bottom: 20px; 
   width: 48%;
   font-family: 'Montserrat', sans-serif;
   }
@@ -6,14 +7,6 @@
   .contenedor-flex {
       display: flex;
       justify-content: space-between;
-  }
-  .texto-inicio{
-    color: #888; 
-    font-size: 20px;
-  }
-  .titulo-inicio{
-    font-size: 50px;
-
   }
   .contenido img{
     width: 100%;

@@ -10,12 +10,10 @@ class CuentasModel extends Model
     use HasFactory;
     protected $table = 'cuentas';
 
-    protected $fillable = ['usuario_id','login','password','fecha_creacion','fecha_fin'];
+    protected $fillable = ['nombre_usu','apellido_pa_usu','apellido_ma_usu','email','login','password','fecha_creacion','fecha_fin'];
 
 
-    public function usuario() {
-        return $this->belongsTo(Usuario::class);
-    }
+   
     public function carpetas() {
         return $this->hasMany(Carpeta::class);
     }

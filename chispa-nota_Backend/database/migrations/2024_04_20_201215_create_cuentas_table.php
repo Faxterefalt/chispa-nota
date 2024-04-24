@@ -15,11 +15,13 @@ class CreateCuentasTable extends Migration
     {
         Schema::create('cuentas', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('usuario_id');
-            $table->foreign('usuario_id')->references('id')->on('usuarios')->onDelete('cascade');        
+            $table->string('nombre_usu');
+            $table->string ('apellido_pa_usu');
+            $table->string ('apellido_ma_usu');      
+            $table->string('email')->unique();
             $table->string('login');
             $table->string('password');
-            $table->date('fecha_creacion');
+            $table->date('fecha_creacion')->nullable();
             $table->date('fecha_fin')->nullable();
             $table->timestamps();
         });
