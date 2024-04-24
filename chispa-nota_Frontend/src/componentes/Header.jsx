@@ -9,10 +9,10 @@ function Header() {
         <h1>Chispanota</h1>
       </div>
       <div className="acciones-usuario">
-        <Link to="/signup">Ingrese Aquí</Link>
+        <Link to="/Login">Ingrese Aquí</Link>
       </div>
       <div className="acciones-usuario">
-        <Link to="/login">Regístrate Gratis</Link>
+        <Link to="/SignUp">Regístrate Gratis</Link>
       </div>
     </header>
   );
