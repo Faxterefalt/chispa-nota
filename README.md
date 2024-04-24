@@ -6,4 +6,5 @@ Compartido y privado
 Los magios
 ## Integrantes
 Azuga Fernandez Marcelo Fabian
+
 Rojas Patiño Josue Pedro

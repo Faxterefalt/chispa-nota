@@ -1,13 +1,19 @@
-import React from 'react';
-import './App.css'; // Importa los estilos CSS para la aplicación
-import MainLayout from './componentes/MainLayout'; // Importa el componente MainLayout
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Login from "./componentes/Login";
+import HomePage from "./componentes/HomePage";
+
 
 function App() {
   return (
-    <div className="app">
-      {/* Renderiza el componente MainLayout */}
-      <MainLayout />
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<Login />} />
+          {/* Agrega más rutas según sea necesario */}
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
