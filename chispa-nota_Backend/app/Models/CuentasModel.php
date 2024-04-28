@@ -10,7 +10,7 @@ class CuentasModel extends Model
     use HasFactory;
     protected $table = 'cuentas';
 
-    protected $fillable = ['nombre_usu','apellido_pa_usu','apellido_ma_usu','email','login','password','fecha_creacion','fecha_fin'];
+    protected $fillable = ['nombre_usu','apellido_pa_usu','apellido_ma_usu','email','user','password'];
 
 
    

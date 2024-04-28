@@ -17,10 +17,8 @@ class CuentasController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'login' => 'required|string',
+            'user' => 'required|string',
             'password' => 'required|string',
-            'fecha_creacion' => 'required|date',
-            'fecha_fin' => 'required|date',
         ]);
 
         $cuenta = new CuentasModel();
@@ -28,10 +26,8 @@ class CuentasController extends Controller
         $cuenta->apellido_pa_usu = $request->apellido_pa_usu;
         $cuenta->apellido_ma_usu = $request->apellido_ma_usu;
         $cuenta->email = $request->email;
-        $cuenta->login = $request->login;
+        $cuenta->user = $request->user;
         $cuenta->password = $request->password;
-        $cuenta->fecha_creacion = $request->fecha_creacion;
-        $cuenta->fecha_fin = $request->fecha_fin;
         $cuenta->save();
 
         return response()->json([
@@ -50,20 +46,17 @@ class CuentasController extends Controller
         $cuenta = CuentasModel::findOrFail($id);
 
         $request->validate([
-            'login' => 'required|string',
+            'user' => 'required|string',
             'password' => 'required|string',
-            'fecha_creacion' => 'required|date',
-            'fecha_fin' => 'required|date',
+
         ]);
 
         $cuenta->nombre_usu = $request->nombre_usu;
         $cuenta->apellido_pa_usu = $request->apellido_pa_usu;
         $cuenta->apellido_ma_usu = $request->apellido_ma_usu;
         $cuenta->email = $request->email;
-        $cuenta->login = $request->login;
+        $cuenta->user = $request->user;
         $cuenta->password = $request->password;
-        $cuenta->fecha_creacion = $request->fecha_creacion;
-        $cuenta->fecha_fin = $request->fecha_fin;
         $cuenta->save();
 
         return response()->json([
