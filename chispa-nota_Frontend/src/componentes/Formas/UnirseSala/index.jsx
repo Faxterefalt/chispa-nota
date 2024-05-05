@@ -19,7 +19,7 @@ const JoinRoomForm = ({uuid, socket, setUser}) =>{
       presenter: false
     };
     setUser(roomData);
-    navigate(`/${roomId}`);
+    navigate(`/pizarra/${roomId}`);
     console.log(roomData);
     socket.emit("userJoined", roomData);
     

@@ -7,6 +7,7 @@ const CreateRoomForm = ({uuid, socket, setUser}) =>{
   const [name, setName]= useState('');
 
   const navigate= useNavigate();
+
   const handleCreateRoom = (e) =>{
     e.preventDefault();
 
@@ -20,7 +21,7 @@ const CreateRoomForm = ({uuid, socket, setUser}) =>{
       presenter: true
     };
     setUser(roomData);
-    navigate(`/${roomId}`);
+    navigate(`/pizarra/${roomId}`);
     console.log(roomData);
     socket.emit("userJoined", roomData);
   };

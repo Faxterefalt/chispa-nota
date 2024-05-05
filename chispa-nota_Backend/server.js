@@ -1,15 +1,13 @@
-const express = require("express");
+const express = require('express');
 const app = express();
 
 const server = require('http').createServer(app);
 const { Server } = require('socket.io');
-const { addUser } = require('./utils/users');
+const { addUser } = require('./utils/users.jsx');
 const io = new Server(server);
-
-
-//rutas
+//routes
 app.get("/",(req,res)=>{
-    res.send("Este es el servidor de la pizarra de chispanota");
+    res.send("Este es el servidor de la pizarra de chispanota.");
 });
 
 let roomIdGlobal,imgURLGlobal;
@@ -17,7 +15,7 @@ let roomIdGlobal,imgURLGlobal;
 io.on("connection",(socket)=>{
     socket.on("userJoined",(data)=>{
         const{name,userId,roomId,host,presenter}=data;
-        roomIdGlobal=roomId;
+        socket.roomId = roomId; // Almacena el roomId en el socket
         socket.join(roomId);
         const users = addUser(data);
         socket.emit("userIsJoined",{success: true,users});
@@ -29,16 +27,16 @@ io.on("connection",(socket)=>{
     });
     socket.on("whiteboardData",(data)=>{
         imgURLGlobal=data;
-        socket.broadcast.to(roomIdGlobal).emit("whiteBoardDataResponse",{
+        socket.broadcast.to(socket.roomId).emit("whiteBoardDataResponse",{
             imgURL:data,
         });
         
     });
     socket.on("userLeft",(data)=>{
-        socket.broadcast.to(roomIdGlobal).emit("userLeftMessageBroadcasted",data);
+        socket.broadcast.to(socket.roomId).emit("userLeftMessageBroadcasted",data);
     });
+    console.log(`Client connected: ${socket.id}`);
 });
 
-
 const port = process.env.PORT || 5000;
-server.listen(port,()=> console.log("el servidor corre en el http://localhost:5000"))
+server.listen(port,()=>console.log("El servidor corre en http://localhost:5000 "));

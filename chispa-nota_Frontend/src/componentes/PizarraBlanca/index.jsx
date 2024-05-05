@@ -17,10 +17,12 @@ function WhiteBoard({
   const [img, setImg]=useState(null);
 
   useEffect(() => {
-    socket.on("whiteBoardDataResponse",(data)=>{
-      setImg(data.imgURL);
-    });
-  }, []);
+    if (socket) {
+      socket.on("whiteBoardDataResponse",(data)=>{
+        setImg(data.imgURL);
+      });
+    }
+  }, [socket]);
 
   if(!user?.presenter){
     return(
