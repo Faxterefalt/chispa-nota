@@ -59,10 +59,13 @@ function Login() {
         <input type="text" id="emailOrUser" name="emailOrUser" required onChange={handleChange} />
         <label htmlFor="password">Tu Contraseña:</label>
         <input type="password" id="password" name="password" required onChange={handleChange} />
+        
         <div className="button-container">
         <button type="submit">Iniciar sesión</button>
         </div>
         {error && <p className="error">{error}</p>}
+        <br></br>
+        <div className='google-login'>
         <GoogleLogin
           clientId="your-google-client-id"
           buttonText="Iniciar sesión con Google"
@@ -71,6 +74,8 @@ function Login() {
           cookiePolicy={'single_host_origin'}
           responseType='code'
         />
+        </div>
+        
       </form>
     </div>
   );

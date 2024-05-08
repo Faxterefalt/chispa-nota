@@ -27,11 +27,7 @@ class CuentasController extends Controller
             'user' => 'required|string|unique:cuentas,user',
             'password' => 'required|string',
         ]);
-        if ($validator->fails()) {
-            return response()->json([
-                'error' => $validator->errors()->first(),
-            ], 400);
-        }
+       
 
         $cuenta = new CuentasModel();
         $cuenta->nombre_usu = $request->nombre_usu;

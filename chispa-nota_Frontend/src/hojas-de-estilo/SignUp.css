@@ -9,6 +9,10 @@ body {
     position: relative;
 }
   
+.button-container{
+    display: flex;
+  justify-content: center;
+}
 .signup-container {
     background-color: #fff;
     width: 350px;

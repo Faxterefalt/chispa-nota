@@ -1,11 +1,12 @@
-import "../hojas-de-estilo/HomePage.css";
+import React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
+import "../hojas-de-estilo/HomePage.css";
 
 function HomePage() {
   return (
     <div>
-      <Header />
+      <Header showUserActions={true} /> {/* Aquí pasamos showUserActions como true */}
       <section className="contenedor-flex">
         <div className="contenido">
           {/* Corrige la ruta de la imagen */}
