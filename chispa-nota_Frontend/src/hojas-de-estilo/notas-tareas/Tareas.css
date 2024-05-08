@@ -1,0 +1,50 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+  }
+  
+  html,body{
+    color:white;
+    background-color:#1b1b32;
+    font-family:Lato,sans-serif;
+    margin-top:40px;
+  }
+  
+  .App{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    align-items:center;
+  }
+  
+  /*logo de chispanota*/
+  .chispanota-logo-contenedor{
+    width:100%;
+    margin:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  
+  .chispanota-logo{
+    width:600px;
+    height:250px;
+  }
+  
+  /*Para la lista de tareas*/
+  .tareas-lista-principal{
+    width:600px;
+    min-height:500px;
+    background-color:#d0d0d5;
+    padding:25px;
+    margin:10px;
+    border-radius:26px;
+  }
+  h1{
+    color:#1b1b32;
+    font-size:25px;
+    font-family:Roboto, sans-serif;
+    text-align:center;
+    margin:20px 0;
+  }
