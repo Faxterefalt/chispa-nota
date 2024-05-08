@@ -2,7 +2,7 @@ import "../hojas-de-estilo/MainPage.css";
 import Header from "./Header";
 import Footer from "./Footer";
 
-function HomePage() {
+function MainPage() {
   return (
     <div>
       <Header />
@@ -14,8 +14,7 @@ function HomePage() {
         <div className="contenido">
           <h2>Organízate, crea y diviértete</h2>
           <p className="texto-inicio">
-            Chispanota es una herramienta fácil e intuitiva que permite organizar
-            tus ideas y proyectos de la mejor manera.
+            
           </p>
         </div>
       </section>
@@ -24,4 +23,4 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+export default MainPage;

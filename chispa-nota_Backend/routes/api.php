@@ -32,6 +32,8 @@ Route::controller(UsuariosController::class)->group(function(){
 Route::controller(CuentasController::class)->group(function(){
     Route::get('/cuentas', [CuentasController::class, 'index']);
     Route::post('/cuentas', [CuentasController::class, 'store']);
+    Route::post('/cuentas/login', [CuentasController::class, 'login']);
+    Route::post('/cuentas/google-login', [CuentasController::class, 'googleLogin']);
     Route::get('/cuentas/{id}', [CuentasController::class, 'show']);
     Route::put('/cuentas/{id}', [CuentasController::class, 'update']);
     Route::delete('/cuentas/{id}', [CuentasController::class, 'destroy']);

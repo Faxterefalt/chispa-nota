@@ -19,10 +19,8 @@ class CreateCuentasTable extends Migration
             $table->string ('apellido_pa_usu');
             $table->string ('apellido_ma_usu');      
             $table->string('email')->unique();
-            $table->string('login');
+            $table->string('user')->unique();
             $table->string('password');
-            $table->date('fecha_creacion')->nullable();
-            $table->date('fecha_fin')->nullable();
             $table->timestamps();
         });
     }

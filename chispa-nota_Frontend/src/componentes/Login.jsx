@@ -1,49 +1,88 @@
-import "../hojas-de-estilo/Login.css";
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import "../hojas-de-estilo/Login.css";
 import axios from 'axios';
-const endpoint = "http://localhost:8000/api";
+import { GoogleLogin } from 'react-google-login';
 
 function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const url= `${endpoint}/cuentas`;
+  const [credentials, setCredentials] = useState({
+    emailOrUser: '',
+    password: ''
+  });
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setCredentials({
+      ...credentials,
+      [e.target.name]: e.target.value
+    });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      const response = await axios.post(url, {
-        email: email,
-        password: password
-      });
+    if (!credentials.emailOrUser || !credentials.password) {
+      setError('Por favor, ingresa tu correo electrónico/usuario y contraseña.');
+      return;
+    }
 
-      console.log(response.data); // Manejar la respuesta del servidor como desees
+    try {
+      const response = await axios.post('http://localhost:8000/api/cuentas/login', credentials);
+      console.log(response.data);
+      setError('');
+      navigate('/mainpage');
     } catch (error) {
-      console.error('Error:', error);
+      setError(error.response ? error.response.data.error : 'Error al iniciar sesión. Por favor, inténtalo de nuevo.');
+      console.error('Error:', error.response ? error.response.data : error.message);
     }
   };
+
+  const responseGoogle = async (response) => {
+    try {
+      const serverResponse = await axios.post('http://localhost:8000/api/cuentas/google-login', { code: response.code });
+      console.log(serverResponse.data);
+      setError('');
+      navigate('/mainpage');
+    } catch (error) {
+      setError(error.response ? error.response.data.error : 'Error al iniciar sesión con Google. Por favor, inténtalo de nuevo.');
+      console.error('Error:', error.response ? error.response.data : error.message);
+    }
+  };
+
   return (
- 
     <div className="login-container">
-      
-      <h2>No te quedes atras en Chispanota</h2>
-      <h3>Inicia sesion</h3>
+      <h2>No te quedes atrás en Chispanota</h2>
+      <h3>Inicia sesión</h3>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="email">Tu Correo Electrónico o Tu Usuario</label><br />
-        <input type="text" id="email" name="email" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" /><br />
-        <label htmlFor="password">Tu Contraseña:</label><br />
-        <input type="password" id="password" name="password" required /><br />
-        <button type="submit">Iniciar sesion</button>
+        <label htmlFor="emailOrUser">Tu Correo Electrónico o Tu Usuario</label>
+        <input type="text" id="emailOrUser" name="emailOrUser" required onChange={handleChange} />
+        <label htmlFor="password">Tu Contraseña:</label>
+        <input type="password" id="password" name="password" required onChange={handleChange} />
+        <div className="button-container">
+        <button type="submit">Iniciar sesión</button>
+        </div>
+        {error && <p className="error">{error}</p>}
+        <GoogleLogin
+          clientId="your-google-client-id"
+          buttonText="Iniciar sesión con Google"
+          onSuccess={responseGoogle}
+          onFailure={responseGoogle}
+          cookiePolicy={'single_host_origin'}
+          responseType='code'
+        />
       </form>
     </div>
   );
 }
+
 function Background(){
   return(
-  <div className="login-background">
-    <Login/>
-    <img src="/imagenes/fondo3.jpg" alt="Fondo 3" />
-  </div>
+    <div className="login-background">
+      <Login/>
+      <img src="/imagenes/fondo3.jpg" alt="Fondo 3" />
+    </div>
   );
 }
-export default Background;
 
+export default Background;
