@@ -8,7 +8,7 @@ import HomePage from "./componentes/HomePage";
 import SignUp from "./componentes/SignUp";
 import MainPage from "./componentes/MainPage";
 import Tareas from "./componentes/notas-tareas/Tareas";
-import {toast, ToastContainer} from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 
 const server = "http://localhost:5000";
 const connectionOptions = {
@@ -34,24 +34,34 @@ const App = () => {
       }
     });
 
-    socket.on("allUsers",(data)=>{
+    socket.on("allUsers", (data) => {
       setUsers(data);
     });
 
     const handleUserJoined = (data) => {
-      toast.info(`${data} se ha unido a la sala.`);
+      toast.info(`${data} se acaba de unir a la sala.`);
     };
 
     socket.on("userJoinedMessageBroadcasted", handleUserJoined);
 
+    // Limpia el evento cuando el componente se desmonta
     return () => {
       socket.off("userJoinedMessageBroadcasted", handleUserJoined);
     };
+  }, []);
 
-    socket.on("userLeftMessageBroadcasted",(data)=>{
-      console.log(`${data} ha abandonado a la sala.`);
-    });
-  },[]);
+  useEffect(() => {
+    const handleUserLeft = (data) => {
+      toast.info(`${data} ha abandonado a la sala.`);
+    };
+
+    socket.on("userLeftMessageBroadcasted", handleUserLeft);
+
+    // Limpia el evento cuando el componente se desmonta
+    return () => {
+      socket.off("userLeftMessageBroadcasted", handleUserLeft);
+    };
+  }, []);
 
   const uuid = () => {
     let S4 = () => {

@@ -1,8 +1,9 @@
 import WhiteBoard from "../../componentes/PizarraBlanca";
 import "./index.css";
 import {useState, useRef, useEffect} from "react";
-
-function RoomPage({ user, socket, users}) {
+import Chat from "../../componentes/ChatBar/index";
+function RoomPage({ user, socket,users}) {
+  const [userList, setUsers]=useState([]);
 
     const canvasRef = useRef(null);
     const ctxRef = useRef(null);
@@ -12,13 +13,21 @@ function RoomPage({ user, socket, users}) {
     const [elements, setElements]=useState([]);
     const [history, setHistory]=useState([]);
     const [openedUserTab, setOpenedUserTab]=useState(false);
+    const [openedChatTab, setOpenedChatTab]=useState(false);
+
+    useEffect(() => {
+      socket.on("userLeft", (updatedUsers) => {
+          // Actualiza la lista de usuarios en línea con los usuarios actualizados
+          console.log("Users left:",updatedUsers);
+          setUsers(updatedUsers);
+      });
   
-    useEffect(()=>{
-      return() => {
-        socket.emit("userLeft",user);
-      }
-    },[]);
-  
+      // Limpia el evento cuando el componente se desmonta
+      return () => {
+          socket.off("userLeft");
+      };
+  }, []);
+
     const handleClearCanvas=()=>{
       const canvas = canvasRef.current;
       const ctx = canvas.getContext("2d");
@@ -60,7 +69,8 @@ function RoomPage({ user, socket, users}) {
         style={{
           display:"block",
           position:"absolute",
-          top:"0",left:"0", 
+          top:"5%",
+          left:"3%", 
           height:"40px",
           width:"100px"
         }}
@@ -68,6 +78,25 @@ function RoomPage({ user, socket, users}) {
         >
           Usuarios
       </button>
+
+      <button 
+        type="button" 
+        className="btn btn-primary"
+        style={{
+          display:"block",
+          position:"absolute",
+          top:"5%",
+          left:"10%", 
+          height:"40px",
+          width:"100px"
+        }}
+        onClick={()=>setOpenedChatTab(true)}
+        >
+          Chat
+      </button>
+
+
+
       {
         openedUserTab&&(
           <div className="position-fixed top-0  h-100 text-white bg-dark" 
@@ -91,6 +120,12 @@ function RoomPage({ user, socket, users}) {
               
               </div>
           </div>
+        )
+      }
+
+      {
+        openedChatTab&&(
+          <Chat setOpenedChatTab={setOpenedChatTab}/>
         )
       }
       <h1 className='text-center py-5'>
