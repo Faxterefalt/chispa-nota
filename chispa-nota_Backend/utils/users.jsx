@@ -2,8 +2,8 @@ const users =[];
 
 // Añadir usuarios a la lista
 
-const addUser = ({name, userId,roomId,host,presenter})=>{
-  const user ={name,userId,roomId,host,presenter};
+const addUser = ({name, userId,roomId,host,presenter,socketId})=>{
+  const user ={name,userId,roomId,host,presenter,socketId};
   users.push(user);
   return users.filter((user)=>user.roomId===roomId);
 };
@@ -11,7 +11,7 @@ const addUser = ({name, userId,roomId,host,presenter})=>{
 //Quitar usuario de la lista
 
 const removeUser = (id)=>{
-  const index = users.findIndex((user)=>user.userId===id);
+  const index = users.findIndex((user)=>user.socketId===id);
   if(index!==-1){
     return users.splice(index,1)[0];
   }
@@ -20,7 +20,7 @@ const removeUser = (id)=>{
 //Obtener usuario de la lista
 
 const getUser = (id)=>{
-  return users.find((user)=>user.userId===id);
+  return users.find((user)=>user.socketId===id);
 }
 
 //Obtener todos los usuarios de la lista de la sala

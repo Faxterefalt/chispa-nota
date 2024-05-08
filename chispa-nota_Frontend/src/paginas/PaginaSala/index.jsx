@@ -2,7 +2,8 @@ import WhiteBoard from "../../componentes/PizarraBlanca";
 import "./index.css";
 import {useState, useRef, useEffect} from "react";
 
-function RoomPage({ user, socket, users}) {
+function RoomPage({ user, socket,users}) {
+  const [userList, setUsers]=useState([]);
 
     const canvasRef = useRef(null);
     const ctxRef = useRef(null);
@@ -12,13 +13,21 @@ function RoomPage({ user, socket, users}) {
     const [elements, setElements]=useState([]);
     const [history, setHistory]=useState([]);
     const [openedUserTab, setOpenedUserTab]=useState(false);
+    
+
+    useEffect(() => {
+      socket.on("userLeft", (updatedUsers) => {
+          // Actualiza la lista de usuarios en línea con los usuarios actualizados
+          console.log("Users left:",updatedUsers);
+          setUsers(updatedUsers);
+      });
   
-    useEffect(()=>{
-      return() => {
-        socket.emit("userLeft",user);
-      }
-    },[]);
-  
+      // Limpia el evento cuando el componente se desmonta
+      return () => {
+          socket.off("userLeft");
+      };
+  }, []);
+
     const handleClearCanvas=()=>{
       const canvas = canvasRef.current;
       const ctx = canvas.getContext("2d");
