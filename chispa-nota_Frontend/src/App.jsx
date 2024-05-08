@@ -8,6 +8,7 @@ import HomePage from "./componentes/HomePage";
 import SignUp from "./componentes/SignUp";
 import MainPage from "./componentes/MainPage";
 import Tareas from "./componentes/notas-tareas/Tareas";
+import {toast, ToastContainer} from 'react-toastify';
 
 const server = "http://localhost:5000";
 const connectionOptions = {
@@ -37,18 +38,20 @@ const App = () => {
       setUsers(data);
     });
 
-    socket.on("userJoinedMessageBroadcasted",(data)=>{
-      console.log(`${data} se ha unido a la sala.`);
-      
-    });
+    const handleUserJoined = (data) => {
+      toast.info(`${data} se ha unido a la sala.`);
+    };
+
+    socket.on("userJoinedMessageBroadcasted", handleUserJoined);
+
+    return () => {
+      socket.off("userJoinedMessageBroadcasted", handleUserJoined);
+    };
 
     socket.on("userLeftMessageBroadcasted",(data)=>{
       console.log(`${data} ha abandonado a la sala.`);
-      
     });
   },[]);
-
-
 
   const uuid = () => {
     let S4 = () => {
@@ -62,7 +65,7 @@ const App = () => {
   return (
     <Router>
       <div className='container'>
-        
+        <ToastContainer />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<Login />} />

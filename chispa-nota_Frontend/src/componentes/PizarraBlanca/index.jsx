@@ -31,7 +31,7 @@ function WhiteBoard({
   >
     <img 
       src={img} 
-      alt="Pizarra en tiempo real compartida por presenter" 
+      alt="Pizarra en tiempo real compartida" 
       //className="w-100 h-100"
       style={{
         height:window.innerHeight*2,
