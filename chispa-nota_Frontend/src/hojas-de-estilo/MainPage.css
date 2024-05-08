@@ -3,7 +3,14 @@
   width: 48%;
   font-family: 'Montserrat', sans-serif;
   }
-  
+  header {
+    background-color: #452D9C;
+    color: #fff;
+    padding: 20px;
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+  }
   .contenedor-flex {
       display: flex;
       justify-content: space-between;
@@ -14,3 +21,21 @@
   position: relative;
     }
     
+.contenedor-flex {
+  display: flex;
+  justify-content: space-between; /* Alinea los elementos al principio y al final del contenedor */
+}
+
+.barra-opciones {
+  width: 200px; /* Ancho deseado de la barra de opciones */
+  min-height: 100%; /* Cubre todo el alto disponible */
+  background-color: #f0f0f0; /* Color de fondo de la barra de opciones */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px; /* Añade un espacio interno */
+}
+
+.barra-opciones button {
+  margin-bottom: 10px; /* Espacio entre los botones */
+}

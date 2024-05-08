@@ -1,24 +1,33 @@
-import "../hojas-de-estilo/MainPage.css";
-import Header from "./Header";
+import React from "react";
+
+import { Link } from "react-router-dom";
 import Footer from "./Footer";
+import "../hojas-de-estilo/MainPage.css";
 
 function MainPage() {
   return (
     <div>
-      <Header />
+      <header>
+      <div className="header-titulo">
+        <h1>Chispanota</h1>
+      </div>
+      
+     
+      </header>
       <section className="contenedor-flex">
         <div className="contenido">
-          {/* Corrige la ruta de la imagen */}
-          <img src="/imagenes/fondo4.jpg" alt="Fondo 4" />
+          {/* Contenido izquierdo */}
         </div>
-        <div className="contenido">
-          <h2>Organízate, crea y diviértete</h2>
-          <p className="texto-inicio">
-            
-          </p>
+        <div className="barra-opciones">
+          {/* Contenedor de las opciones */}
+          <Link to="/Pizarra"><button>Pizarra</button></Link>
+          <button>Carpetas</button>
+          <button>Columnas</button>
+          <Link to="/tareas"><button>Lista de Tareas</button></Link>
+          
         </div>
       </section>
-      <Footer />
+      <div><Footer /></div>
     </div>
   );
 }

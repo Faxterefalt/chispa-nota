@@ -8,7 +8,11 @@ body {
     height: auto; 
     position: relative;
 }
-  
+
+.google-login{
+    display: flex;
+    justify-content: center;
+}
 .login-container {
     background-color: #fff;
     width: 350px;

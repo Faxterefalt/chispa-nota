@@ -64,7 +64,8 @@ function SignUp() {
         <input type="text" id="user" name="user" required value={user} onChange={(e) => setUser(e.target.value)} /><br />
         <label htmlFor="password">Contraseña:</label><br />
         <input type="password" id="password" name="password" required value={password} onChange={(e) => setPassword(e.target.value)} /><br />
-        <button type="submit">Registrarse</button>
+
+          <button type="submit">Registrarse</button>
 
       </form>
     </div>

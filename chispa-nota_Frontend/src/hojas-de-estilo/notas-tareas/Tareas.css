@@ -4,12 +4,7 @@
     box-sizing:border-box;
   }
   
-  html,body{
-    color:white;
-    background-color:#1b1b32;
-    font-family:Lato,sans-serif;
-    margin-top:40px;
-  }
+
   
   .App{
     display:flex;
