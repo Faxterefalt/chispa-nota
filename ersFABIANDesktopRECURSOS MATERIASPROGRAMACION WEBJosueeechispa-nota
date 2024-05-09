@@ -1,0 +1,393 @@
+[33mcommit 16e667310519f9ecca2d7b54752b8f13a17e1f20[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: 24525 cc23f
+Author: Marcelo Fabian Azuga Fernández <92612339+Faxterefalt@users.noreply.github.com>
+Date:   Wed May 8 12:43:10 2024 -0400
+
+    Merge pull request #6 from Faxterefalt/josue
+    
+    creacion de botones en mainpage
+
+[33mcommit cc23fef3c7fdc6337292e88bf7273d355946c217[m[33m ([m[1;31morigin/josue[m[33m)[m
+Merge: 6d155 24525
+Author: Marcelo Fabian Azuga Fernández <92612339+Faxterefalt@users.noreply.github.com>
+Date:   Wed May 8 12:42:39 2024 -0400
+
+    Merge branch 'master' into josue
+
+[33mcommit 6d1552a6628548f2cfddca9416f7598f1d530590[m
+Author: Josue <josue7pedro@gmail.com>
+Date:   Wed May 8 12:15:00 2024 -0400
+
+    creacion de botones en mainpage
+
+[33mcommit 2452579cb376b54741735af8b4e7c3d3c935280c[m
+Author: Faxterefalt <azugafabian321@gmail.com>
+Date:   Wed May 8 11:56:17 2024 -0400
+
+    espacio para chat
+
+[33mcommit 50e5b570fdb4643e514c70eccf4a152a0216e8cf[m
+Merge: cf3c0 48ac0
+Author: Marcelo Fabian Azuga Fernández <92612339+Faxterefalt@users.noreply.github.com>
+Date:   Wed May 8 10:31:17 2024 -0400
+
+    Merge pull request #5 from Faxterefalt/josue
+    
+    JosueBackend
+
+[33mcommit cf3c0b182512e7a0bae13f373a3a8cfce24441e0[m
+Author: Faxterefalt <azugafabian321@gmail.com>
+Date:   Wed May 8 10:18:21 2024 -0400
+
+    notificación de abandono de sala
+
+[33mcommit 48ac08e013f4b6e46f4b9719fc29fbf366a1b9fc[m
+Merge: 1d115 3dcd0
+Author: Josue <josue7pedro@gmail.com>
+Date:   Wed May 8 07:56:21 2024 -0400
+
+    merge completado
+
+[33mcommit 1d115ced0f8e5821d60dd0f32a5447cb90952690[m
+Author: Josue <josue7pedro@gmail.com>
+Date:   Wed May 8 07:50:37 2024 -0400
+
+    se añadio el inicio de sesion por google
+
+[33mcommit 3dcd05f0836e2477f13b0887febcdcbce39c1e03[m
+Author: Faxterefalt <azugafabian321@gmail.com>
+Date:   Wed May 8 06:06:13 2024 -0400
+
+    notificación de usuario conectado
+
+[33mcommit 42291c7eadb479e37d570b584d01291c071e3b4f[m
+Author: Faxterefalt <azugafabian321@gmail.com>
+Date:   Sat May 4 23:49:17 2024 -0400
+
+    conexión al servidor de la pizarra
+
+[33mcommit 074f14646e33d4453227f101369558886a684fe3[m
+Author: Faxterefalt <azugafabian321@gmail.com>
+Date:   Sat May 4 12:10:47 2024 -0400
+
+    adaptación de server con usuarios de pizarra
+
+[33mcommit 07e17d6719ffbcf08254b42afb0e13ce76d48a2e[m
+Author: Faxterefalt <azugafabian321@gmail.com>
+Date:   Sat May 4 12:05:17 2024 -0400
+
+    Espacio para unirse a sala de pizarra
+
+[33mcommit 8a0f4cd816167a2d03f9962e9d1709a1171976f2[m
+Author: Faxterefalt <azugafabian321@gmail.com>
+Date:   Sat May 4 11:56:50 2024 -0400
+
+    Espacio para crear sala de pizarra
+
+[33mcommit 2642c2dab72ca479ccf48821f57c38b5adfd99c8[m
+Author: Faxterefalt <azugafabian321@gmail.com>
+Date:   Sat May 4 10:29:59 2024 -0400
+
+    Página de la pizarra colaborativa
+
+[33mcommit 7aa726fc16dccf0dbefd4903a28b992b369e2c2a[m
+Author: Faxterefalt <azugafabian321@gmail.com>
+Date:   Fri May 3 17:38:32 2024 -0400
+
+    dependencias toastify y socket.io-client
+
+[33mcommit ea93b6f8a5989a46d4849293e7465b75c3e09a25[m
+Author: Faxterefalt <azugafabian321@gmail.com>
+Date:   Fri May 3 16:09:27 2024 -0400
+
+    node js para backend de la pizarra
+
+[33mcommit 4db77f975c704b898b8e0f867a15bf190b681d32[m
+Author: Faxterefalt <azugafabian321@gmail.com>
+Date:   Fri May 3 12:14:52 2024 -0400
+
+    lista de tareas estática pero funcional
+
+[33mcommit 143b47e73e8e1acc4162e64fd3757c7bfeeaf68a[m
+Author: Faxterefalt <azugafabian321@gmail.com>
+Date:   Thu May 2 17:07:04 2024 -0400
+
+    vite + react para el proyecto
+
+[33mcommit c34b653262ff7f41857efdff4b12a7e11bf69322[m
+Author: Josue <josue7pedro@gmail.com>
+Date:   Sat Apr 27 22:39:43 2024 -0400
+
+    Cambios en cuentas
+
+[33mcommit 1732c87b3d8f4072ae765e04049b3bae94220b6a[m
+Merge: 99c99 c0615
+Author: Marcelo Fabian Azuga Fernández <92612339+Faxterefalt@users.noreply.github.com>
+Date:   Wed Apr 24 14:05:20 2024 -0400
+
+    Merge pull request #2 from Faxterefalt/josue
+    
+    Josue-cambios-backend
+
+[33mcommit c06158bb7075198526787b26f47e1ce8113504c5[m
+Author: Josue <josue7pedro@gmail.com>
+Date:   Wed Apr 24 12:53:08 2024 -0400
+
+    integracion frontend con backend
+
+[33mcommit 0774124f8b7490210fb3878fcca8c4a0b7757e02[m
+Author: Josue <josue7pedro@gmail.com>
+Date:   Wed Apr 24 09:37:16 2024 -0400
+
+    ultimo cambio de merge
+
+[33mcommit 28acb398a323ecb3f4715766798e56fe7ab715c6[m
+Merge: 02f8e 99c99
+Author: Josue <josue7pedro@gmail.com>
+Date:   Wed Apr 24 09:13:10 2024 -0400
+
+    Merge branch 'master' into josue
+
+[33mcommit 99c99ae807cf6d97f96f465403b046cc4835726d[m
+Author: Josue <josue7pedro@gmail.com>
+Date:   Wed Apr 24 09:05:04 2024 -0400
+
+    cambios para merge
+
+[33mcommit a8b09464bff8eb085388993b07945c22891574d4[m
+Merge: 31ecd 3ded0
+Author: Josue <josue7pedro@gmail.com>
+Date:   Tue Apr 23 20:16:11 2024 -0400
+
+    Merge branch 'master' of https://github.com/Faxterefalt/chispa-nota
+
+[33mcommit 02f8eafa20cda883a5543dba8376c1f55fdcd5c3[m
+Author: Josue <josue7pedro@gmail.com>
+Date:   Tue Apr 23 06:42:07 2024 -0400
+
+    frontend
+
+[33mcommit 8d92038e58fd6ca64bac329433acb07d4f8dfd34[m
+Author: Josue <josue7pedro@gmail.com>
+Date:   Mon Apr 22 08:58:45 2024 -0400
+
+    Crud de recuèracion
+
+[33mcommit 5db8db69f9b883b132f2bcbbfd33ec442b6e9939[m
+Author: Josue <josue7pedro@gmail.com>
+Date:   Mon Apr 22 08:55:23 2024 -0400
+
+    Crud de carpetas
+
+[33mcommit b9cedf688fe49617c09acd146cfbe209c96799c0[m
+Author: Josue <josue7pedro@gmail.com>
+Date:   Mon Apr 22 08:52:04 2024 -0400
+
+    Crud de cuentas
+
+[33mcommit 3ded0e6ea4c3ebc6665743f50ad1fd28c2ef041e[m
+Merge: ba263 f7f6f
+Author: Faxterefalt <azugafabian321@gmail.com>
+Date:   Mon Apr 22 02:38:43 2024 -0400
+
+    Merge branch 'master' of https://github.com/Faxterefalt/chispa-nota
+
+[33mcommit ba263a3937e379afdf96737a7174208ce74604c8[m
+Author: Faxterefalt <azugafabian321@gmail.com>
+Date:   Mon Apr 22 02:25:59 2024 -0400
+
+    primera adaptación a react
+
+[33mcommit 80aedfa871f520a9e304b9d5ca060c4de379bee5[m
+Author: Josue <josue7pedro@gmail.com>
+Date:   Mon Apr 22 00:08:51 2024 -0400
+
+    Crud de usuarios
+
+[33mcommit bb40f3857f6ada99cad6087a001b13e25b340998[m
+Author: Josue <josue7pedro@gmail.com>
+Date:   Sun Apr 21 22:33:11 2024 -0400
+
+    cambios en migraciones
+
+[33mcommit f7f6fa26a43c295a4aed9ed31c022343237b3e00[m
+Author: Josue Pedro Rojas Patiño <73392635+josuex123@users.noreply.github.com>
+Date:   Sun Apr 21 10:21:34 2024 -0400
+
+    Update README.md
+
+[33mcommit 370c50a3865c53591b8a6820540c864b3299b180[m
+Author: Josue <josue7pedro@gmail.com>
+Date:   Sun Apr 21 10:16:28 2024 -0400
+
+    Se arreglo el formato de nombres y se añadieron relaciones
+
+[33mcommit cb089f8b3f46d7e1dc73a502043b8e07345b36bb[m
+Author: Josue <josue7pedro@gmail.com>
+Date:   Sat Apr 20 20:27:34 2024 -0400
+
+    creacion de atributos en las migraciones usuarios,cuentas,recuperaciones y carpetas
+
+[33mcommit fadbd9ffff8a7ecc28cbd2cbf88c6cc3971cb4fe[m
+Author: Josue <josue7pedro@gmail.com>
+Date:   Sat Apr 20 16:18:32 2024 -0400
+
+    migracion,model y controller creados para usuarios,cuentas,recuperacion y carpetas
+
+[33mcommit 31ecd9f79d2025c42e34067852267a470df400ec[m
+Merge: 0d758 8170a
+Author: Josue <josue7pedro@gmail.com>
+Date:   Sat Apr 20 16:04:51 2024 -0400
+
+    Merge branch 'josue'
+
+[33mcommit 0d758b053ee1b5b9be6f058e6e118156d95282da[m
+Merge: 11682 aad5a
+Author: Josue <josue7pedro@gmail.com>
+Date:   Fri Apr 19 19:47:10 2024 -0400
+
+    Merge branch 'master' of https://github.com/Faxterefalt/chispa-nota
+
+[33mcommit 116825fb4ac8c788bd460428892bc86562a8446a[m
+Author: Josue <josue7pedro@gmail.com>
+Date:   Fri Apr 19 19:44:27 2024 -0400
+
+    readme con el nombre e integrantes del equipo
+
+[33mcommit aad5a683b4885ade65e0dfe06d3a5028742d4513[m
+Author: Fabián Azuga (Faxter) <azugafabian321@gmail.com>
+Date:   Sat Apr 13 18:03:09 2024 -0400
+
+    cambios guardados
+
+[33mcommit a4852ab5eb7a11f809b68d65ea1c7f435551b045[m
+Author: Fabián Azuga (Faxter) <azugafabian321@gmail.com>
+Date:   Sat Apr 13 12:46:33 2024 -0400
+
+    no era necesario el styles.css en src
+
+[33mcommit d4963eff63c724e63cea61562f96874165d47cb2[m
+Author: Fabián Azuga (Faxter) <azugafabian321@gmail.com>
+Date:   Sat Apr 13 12:44:44 2024 -0400
+
+    cambio de ruta para styles.css y login.html
+
+[33mcommit 0b9e572fb3cd789a40f5d54a2e4b23ddbb7c70ef[m
+Author: Faxterefalt <azugafabian321@gmail.com>
+Date:   Sat Apr 13 12:37:17 2024 -0400
+
+    styles.css en el src
+
+[33mcommit 838e191759e881c28247669c3d75e330da252be5[m
+Author: Josue <josue7pedro@gmail.com>
+Date:   Sat Apr 13 12:26:34 2024 -0400
+
+    frameworks
+
+[33mcommit 8babc748637766a677d835e2be540d0c5a52b81b[m
+Author: Josue <josue7pedro@gmail.com>
+Date:   Sat Apr 13 12:23:10 2024 -0400
+
+    frameworks
+
+[33mcommit a2255afb7acd0183e6d5af951cbc5d7578bfd6ae[m
+Author: Josue <josue7pedro@gmail.com>
+Date:   Sat Apr 13 09:59:53 2024 -0400
+
+    creacion de directorios backend
+
+[33mcommit 093630cb0dc49537aebde61fef98cb7eea105b9c[m
+Author: Josue <josue7pedro@gmail.com>
+Date:   Sat Apr 13 09:57:32 2024 -0400
+
+    creacion de directorios
+
+[33mcommit 8d66ffa973eed5e11aa5473c756ab9011f08d1b3[m
+Author: Faxterefalt <azugafabian321@gmail.com>
+Date:   Fri Apr 12 13:55:55 2024 -0400
+
+    se ha recordado
+
+[33mcommit e214c2bdb6c23064ec66cf109467c376b967437f[m
+Author: Faxterefalt <azugafabian321@gmail.com>
+Date:   Fri Apr 12 13:45:36 2024 -0400
+
+    recordando cosas
+
+[33mcommit 8170a675245b467c6333fa33d5ee62fa93d18f8d[m
+Author: Josue <josue7pedro@gmail.com>
+Date:   Tue Apr 9 17:45:22 2024 -0400
+
+    Eliminando prueba
+
+[33mcommit 2a266d0a68b01eaf0d45fafe0acffc501e532a9d[m
+Author: Josue <josue7pedro@gmail.com>
+Date:   Tue Apr 9 17:43:40 2024 -0400
+
+    Probando el repositorio original
+
+[33mcommit 1c77f3ea81d768dc4cb7d394405238711830e573[m
+Author: Faxterefalt <azugafabian321@gmail.com>
+Date:   Sun Apr 7 07:52:20 2024 -0400
+
+    separando los elementos css
+
+[33mcommit f7bf5a78f863859727a617f5b8a15b53c1122d9e[m
+Author: Faxterefalt <azugafabian321@gmail.com>
+Date:   Fri Apr 5 09:46:50 2024 -0400
+
+    eliminando 5deAbril.txt
+
+[33mcommit 8b1515b8773fb9a312f0a003b991f2f22b53c6ec[m
+Author: Faxterefalt <azugafabian321@gmail.com>
+Date:   Fri Apr 5 09:20:43 2024 -0400
+
+    Nos ponemos de acuerdo con lo que vamos a trabajar
+
+[33mcommit afdc9640f35670c21fa138a06bc19232ee5a714c[m
+Author: Faxterefalt <azugafabian321@gmail.com>
+Date:   Thu Apr 4 18:00:07 2024 -0400
+
+    Eliminando comentarios
+
+[33mcommit e929e4ff035ff7d71efeede6db5f45cec5183d9a[m
+Author: Faxterefalt <azugafabian321@gmail.com>
+Date:   Thu Apr 4 16:17:58 2024 -0400
+
+    añadiendo la carpeta img a la rama master
+
+[33mcommit b49d12c2c7b9463c6a6cd38548cec3d49ed8ba8f[m
+Author: Faxterefalt <azugafabian321@gmail.com>
+Date:   Thu Apr 4 16:17:25 2024 -0400
+
+    actualizando el index.html según la rama de Josue
+
+[33mcommit 11a9861a45fc514d1bffc775f5bc2747d3937eb3[m
+Author: Faxterefalt <azugafabian321@gmail.com>
+Date:   Tue Apr 2 19:01:53 2024 -0400
+
+    cambiando aspecto general de la página
+
+[33mcommit 282b4fd84117b15013f9b44ed0b36246ab528c5e[m
+Author: Faxterefalt <azugafabian321@gmail.com>
+Date:   Tue Apr 2 17:09:35 2024 -0400
+
+    cambiando el título
+
+[33mcommit a144288e5761836a2d6bfcee4a1ac919dfa6e2aa[m
+Author: Marcelo Fabian Azuga Fernández <92612339+Faxterefalt@users.noreply.github.com>
+Date:   Tue Apr 2 16:43:48 2024 -0400
+
+    Subiendo los archivos de funcionalidades e index para le proyecto
+
+[33mcommit a83376a912ea75c9236ca651870b084db8931a6e[m
+Author: Marcelo Fabian Azuga Fernández <92612339+Faxterefalt@users.noreply.github.com>
+Date:   Tue Apr 2 16:40:03 2024 -0400
+
+    Update README.md
+
+[33mcommit b81348baf141da727a7984bd05694503019a4fdb[m
+Author: Marcelo Fabian Azuga Fernández <92612339+Faxterefalt@users.noreply.github.com>
+Date:   Tue Apr 2 16:37:59 2024 -0400
+
+    Initial commit
