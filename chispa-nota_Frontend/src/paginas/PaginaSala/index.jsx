@@ -125,7 +125,7 @@ function RoomPage({ user, socket,users}) {
 
       {
         openedChatTab&&(
-          <Chat setOpenedChatTab={setOpenedChatTab}/>
+          <Chat setOpenedChatTab={setOpenedChatTab} socket={socket}/>
         )
       }
       <h1 className='text-center py-5'>

@@ -11,12 +11,12 @@ app.get("/", (req, res) => {
     res.send("Este es el servidor de la pizarra de chispanota.");
 });
 
-let imgURLGlobal;
+let roomIdGlobal,imgURLGlobal;
 
 io.on("connection", (socket) => {
     socket.on("userJoined", (data) => {
         const { name, userId, roomId, host, presenter } = data;
-        socket.roomId = roomId;
+        roomIdGlobal = roomId;
         socket.join(roomId);
         const users = addUser({
             name,
@@ -37,10 +37,20 @@ io.on("connection", (socket) => {
 
     socket.on("whiteboardData", (data) => {
         imgURLGlobal = data;
-        socket.broadcast.to(socket.roomId).emit("whiteBoardDataResponse", {
+        socket.broadcast.to(roomIdGlobal).emit("whiteBoardDataResponse", {
             imgURL: data,
         });
     });
+
+    socket.on("mensaje", (data) => {
+        const {mensaje}=data;
+        const user = getUser(socket.id); 
+        
+        if (user) {
+            socket.broadcast.to(user.roomId).emit("respuestaMensaje",{mensaje,name:user.name});
+            socket.emit("respuestaMensaje",{mensaje,name:"Tú", self: true});
+        }
+    })
 
     socket.on("disconnect", () => {
         const user = getUser(socket.id); // Utiliza la función getUser para obtener el usuario
