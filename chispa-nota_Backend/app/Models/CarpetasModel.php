@@ -11,6 +11,11 @@ class CarpetasModel extends Model
     protected $table = 'carpetas';
 
     protected $fillable = [ 'cuenta_id','nombre_carp','descripcion_carp','fecha_creacion_carp'];
+
+    public function columnas()
+    {
+        return $this->hasMany(Columna::class);
+    }
     public function cuenta() {
         return $this->belongsTo(Cuenta::class);
     }
