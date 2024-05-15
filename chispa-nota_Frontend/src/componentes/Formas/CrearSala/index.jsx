@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import {useNavigate} from 'react-router-dom';
 
 const CreateRoomForm = ({uuid, socket, setUser}) =>{
@@ -7,6 +7,8 @@ const CreateRoomForm = ({uuid, socket, setUser}) =>{
   const [name, setName]= useState('');
 
   const navigate= useNavigate();
+
+  const roomIdRef = useRef();
 
   const handleCreateRoom = (e) =>{
     e.preventDefault();
@@ -25,6 +27,12 @@ const CreateRoomForm = ({uuid, socket, setUser}) =>{
     console.log(roomData);
     socket.emit("userJoined", roomData);
   };
+
+  const handleCopy = async (e) =>{
+    e.preventDefault();
+    await navigator.clipboard.writeText(roomId);
+    alert("Código de sala copiado al portapapeles");
+  }
 
     return(
      <form className='form col-md-12 mt-5'>
@@ -53,7 +61,10 @@ const CreateRoomForm = ({uuid, socket, setUser}) =>{
               type="button">
                 Generar
               </button>
-              <button className="btn btn-outline-danger btn-sm me-2" type="button">
+              <button className="btn btn-outline-danger btn-sm me-2" 
+              type="button"
+              onClick={handleCopy}
+              >
                 Copiar
               </button>
             </div>
@@ -69,4 +80,4 @@ const CreateRoomForm = ({uuid, socket, setUser}) =>{
     )
     }
     
-    export default CreateRoomForm;
+export default CreateRoomForm;
