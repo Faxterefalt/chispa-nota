@@ -16,17 +16,15 @@ function RoomPage({ user, socket,users}) {
     const [openedChatTab, setOpenedChatTab]=useState(false);
 
     useEffect(() => {
-      socket.on("userLeft", (updatedUsers) => {
-          // Actualiza la lista de usuarios en línea con los usuarios actualizados
-          console.log("Users left:",updatedUsers);
-          setUsers(updatedUsers);
+      socket.on("onlineUsers", (numUsers) => {
+          setOnlineUsers(numUsers);
       });
   
-      // Limpia el evento cuando el componente se desmonta
       return () => {
-          socket.off("userLeft");
+          socket.off("onlineUsers");
       };
-  }, []);
+  }, [socket]);
+
 
     const handleClearCanvas=()=>{
       const canvas = canvasRef.current;

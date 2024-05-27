@@ -20,7 +20,7 @@ const Chat = ({ setOpenedChatTab, socket }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (mensaje.trim() !== "") {
-      //setChat((prevChats) => [...prevChats, { mensaje, name: "You" }]);
+      
       socket.emit("mensaje", { mensaje });
       setMensaje("");
     }
