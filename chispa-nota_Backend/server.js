@@ -12,8 +12,12 @@ app.get("/", (req, res) => {
 });
 
 let roomIdGlobal,imgURLGlobal;
+let onlineUsers = 0; 
 
 io.on("connection", (socket) => {
+    onlineUsers++;
+    io.emit("onlineUsers", onlineUsers);
+
     socket.on("userJoined", (data) => {
         const { name, userId, roomId, host, presenter } = data;
         roomIdGlobal = roomId;
@@ -53,14 +57,18 @@ io.on("connection", (socket) => {
     })
 
     socket.on("disconnect", () => {
-        const user = getUser(socket.id); // Utiliza la función getUser para obtener el usuario
+        onlineUsers--;
+        io.emit("onlineUsers", onlineUsers);
+        const user = getUser(socket.id); 
         
         if (user) {
-            const roomId = user.roomId; // Obtén el ID de la sala del usuario
+            const roomId = user.roomId; 
             removeUser(socket.id);
+            const users = getUsersInRoom(roomId); // Obtiene la lista actualizada de usuarios
             socket.broadcast
             .to(roomId) // Utiliza roomId en lugar de roomIdGlobal
             .emit("userLeftMessageBroadcasted", user.name);
+            socket.broadcast.to(roomId).emit("allUsers", users); // Emite la lista actualizada de usuarios
         }
     });
 

@@ -2,6 +2,8 @@ import WhiteBoard from "../../componentes/PizarraBlanca";
 import "./index.css";
 import {useState, useRef, useEffect} from "react";
 import Chat from "../../componentes/ChatBar/index";
+import Swal from 'sweetalert2';
+
 function RoomPage({ user, socket,users}) {
   const [userList, setUsers]=useState([]);
 
@@ -16,17 +18,15 @@ function RoomPage({ user, socket,users}) {
     const [openedChatTab, setOpenedChatTab]=useState(false);
 
     useEffect(() => {
-      socket.on("userLeft", (updatedUsers) => {
-          // Actualiza la lista de usuarios en línea con los usuarios actualizados
-          console.log("Users left:",updatedUsers);
-          setUsers(updatedUsers);
+      socket.on("onlineUsers", (numUsers) => {
+          setOnlineUsers(numUsers);
       });
   
-      // Limpia el evento cuando el componente se desmonta
       return () => {
-          socket.off("userLeft");
+          socket.off("onlineUsers");
       };
-  }, []);
+  }, [socket]);
+
 
     const handleClearCanvas=()=>{
       const canvas = canvasRef.current;
@@ -181,7 +181,7 @@ function RoomPage({ user, socket,users}) {
             <input 
             type="color" 
             id="color" 
-            className="mt-1 ms-3"
+            className="mt-1 ms-2"
             value={color}
             onChange={(e)=>setColor(e.target.value)}
             />
@@ -200,16 +200,35 @@ function RoomPage({ user, socket,users}) {
             >
               Rehacer</button>
           </div>
-  <div className="col-md-2">
+<div className="col-md-2">
     <button className="btn btn-danger" onClick={handleClearCanvas}>Limpiar Canvas</button>
-  </div>
-  
+    
+</div>
+
+<button 
+className="btn ml-2" 
+style={{backgroundColor: 'purple', color: 'white'}}
+onClick={() => {
+    Swal.fire({
+        title: '¿Quieres exportar la imagen a tu espacio de trabajo?',
+        showDenyButton: true,
+        confirmButtonText: `Exportar`,
+        denyButtonText: `Seguir Editando`,
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Aquí va el código para exportar la imagen
+        }
+    })
+}}
+>
+Mover a Principal
+</button>
             </div>
           )
         }
   
   
-      <div className="col-md-10 mx-auto mt-4 canvas-box">
+      <div className="col-md-10 mx-auto mt-1 canvas-box">
         <WhiteBoard 
           canvasRef={canvasRef} 
           ctxRef={ctxRef}
