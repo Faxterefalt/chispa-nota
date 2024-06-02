@@ -18,7 +18,7 @@ class CreateColumnasTable extends Migration
             $table->id();
             $table->unsignedBigInteger('carpeta_id');
             $table->foreign('carpeta_id')->references('id')->on('carpetas')->onDelete('cascade');
-            $table->string('name');
+            $table->string('nombre_col');
             $table->timestamps();
 
         });

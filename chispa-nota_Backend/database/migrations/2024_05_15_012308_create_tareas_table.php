@@ -16,9 +16,9 @@ class CreateTareasTable extends Migration
         Schema::create('tareas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('lista_tareas_id');
-            $table->foreign('lista_de_tareas_id')->references('id')->on('lista_tareas')->onDelete('cascade');
-            $table->string('name');
-            $table->text('description')->nullable();
+            $table->foreign('lista_tareas_id')->references('id')->on('lista_tareas')->onDelete('cascade');
+            $table->string('nombre_tar');
+            $table->text('descripcion_tar')->nullable();
             $table->timestamps();
 
             });

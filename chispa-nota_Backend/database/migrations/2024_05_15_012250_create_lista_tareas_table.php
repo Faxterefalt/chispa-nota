@@ -17,8 +17,8 @@ class CreateListaTareasTable extends Migration
             $table->id();
             $table->unsignedBigInteger('columna_id');
             $table->foreign('columna_id')->references('id')->on('columnas')->onDelete('cascade');
-            $table->string('name');
-            $table->text('description')->nullable();
+            $table->string('nombre_list');
+            $table->text('descripcion_list')->nullable();
             $table->timestamps();
 
             

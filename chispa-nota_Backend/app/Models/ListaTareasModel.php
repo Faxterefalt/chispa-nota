@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class ListaTareasModel extends Model
 {
     use HasFactory;
+    protected $table = 'lista_tareas';
+
+    protected $fillable = [ 'nombre_col','nombre_list','descripcion_list'];
 
     public function columna()
     {
