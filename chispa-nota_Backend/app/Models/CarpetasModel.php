@@ -10,13 +10,17 @@ class CarpetasModel extends Model
     use HasFactory;
     protected $table = 'carpetas';
 
-    protected $fillable = [ 'cuenta_id','nombre_carp','descripcion_carp','fecha_creacion_carp'];
+    protected $fillable = [ 'cuenta_id',
+                            'nombre_carp',
+                            'descripcion_carp',
+                            'fecha_creacion_carp',
+                        ];
 
     public function columnas()
     {
-        return $this->hasMany(Columna::class);
+        return $this->hasMany(ColumnasModel::class);
     }
     public function cuenta() {
-        return $this->belongsTo(Cuenta::class);
+        return $this->belongsTo(CuentasModel::class);
     }
 }

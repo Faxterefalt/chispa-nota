@@ -5,19 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ColumnasModel extends Model
+class NotasModel extends Model
 {
     use HasFactory;
-    protected $table = 'columnas';
+    protected $table = 'notas';
 
-    protected $fillable = [ 'nombre_col','carpeta_id'];
+    protected $fillable = [
+        'descripcion_not', 
+        'carpeta_id',
+    ];
 
-    public function listaTareas()
-    {
-        return $this->hasMany(LineaTareasModel::class);
-    }
     public function carpeta()
     {
         return $this->belongsTo(CarpetasModel::class);
     }
+
 }

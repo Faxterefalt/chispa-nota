@@ -18,7 +18,7 @@ class CreateTareasTable extends Migration
             $table->unsignedBigInteger('lista_tareas_id');
             $table->foreign('lista_tareas_id')->references('id')->on('lista_tareas')->onDelete('cascade');
             $table->string('nombre_tar');
-            $table->text('descripcion_tar')->nullable();
+            $table->string('descripcion_tar')->nullable();
             $table->timestamps();
 
             });

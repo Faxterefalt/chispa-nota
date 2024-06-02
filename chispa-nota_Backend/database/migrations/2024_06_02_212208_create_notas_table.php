@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateListaTareasTable extends Migration
+class CreateNotasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,12 @@ class CreateListaTareasTable extends Migration
      */
     public function up()
     {
-        Schema::create('lista_tareas', function (Blueprint $table) {
+        Schema::create('notas', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('columna_id');
-            $table->foreign('columna_id')->references('id')->on('columnas')->onDelete('cascade');
-            $table->string('nombre_list');
-            $table->string('descripcion_list')->nullable();
+            $table->string('descripcion_not');
+            $table->unsignedBigInteger('carpeta_id');
+            $table->foreign('carpeta_id')->references('id')->on('carpetas')->onDelete('cascade');
             $table->timestamps();
-
-            
         });
     }
 
@@ -32,6 +29,6 @@ class CreateListaTareasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lista_tareas');
+        Schema::dropIfExists('notas');
     }
 }
