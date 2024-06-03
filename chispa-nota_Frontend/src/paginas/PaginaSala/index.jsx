@@ -27,6 +27,13 @@ function RoomPage({ user, socket,users}) {
       };
   }, [socket]);
 
+  const handleExport = () => {
+    const canvas = canvasRef.current;
+    if (canvas) {
+      const image = canvas.toDataURL();
+      localStorage.setItem('canvasImage', image);
+    }
+  };
 
     const handleClearCanvas=()=>{
       const canvas = canvasRef.current;
@@ -206,22 +213,23 @@ function RoomPage({ user, socket,users}) {
 </div>
 
 <button 
-className="btn ml-2" 
-style={{backgroundColor: 'purple', color: 'white'}}
-onClick={() => {
+  className="btn ml-2" 
+  style={{backgroundColor: 'purple', color: 'white'}}
+  onClick={() => {
     Swal.fire({
-        title: '¿Quieres exportar la imagen a tu espacio de trabajo?',
-        showDenyButton: true,
-        confirmButtonText: `Exportar`,
-        denyButtonText: `Seguir Editando`,
+      title: '¿Quieres exportar la imagen a tu espacio de trabajo?',
+      showDenyButton: true,
+      confirmButtonText: `Exportar`,
+      denyButtonText: `Seguir Editando`,
     }).then((result) => {
-        if (result.isConfirmed) {
-            // Aquí va el código para exportar la imagen
-        }
+      if (result.isConfirmed) {
+        handleExport();
+        window.location.href = '/mainpage';
+      }
     })
-}}
+  }}
 >
-Mover a Principal
+  Mover a Principal
 </button>
             </div>
           )

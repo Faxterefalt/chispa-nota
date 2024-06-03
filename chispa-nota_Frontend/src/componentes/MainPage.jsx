@@ -1,12 +1,25 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Footer from './Footer';
+
 
 function MainPage() {
   const [notes, setNotes] = useState([]);
   const [dragId, setDragId] = useState();
+  const [canvasImage, setCanvasImage] = useState(null); 
   const noteButtonRef = useRef();
   const notesAreaRef = useRef();
+
+  useEffect(() => {
+    const handleStorageChange = () => {
+      const image = localStorage.getItem('canvasImage');
+      setCanvasImage(image);
+    };
+    window.addEventListener('storage', handleStorageChange);
+     // Limpiar el evento al desmontar el componente
+  return () => {
+    window.removeEventListener('storage', handleStorageChange);
+  };
+},[]);
 
   const addNote = () => {
     const rect = noteButtonRef.current.getBoundingClientRect();
@@ -62,6 +75,9 @@ function MainPage() {
           <Link to="/tareas"><button>Lista de Tareas</button></Link>
         </div>
       </section>
+      
+      {canvasImage && <img src={canvasImage} alt="Canvas" />}
+      
       <div ref={notesAreaRef} onDragOver={(event) => event.preventDefault()} onDrag={handleDrag} style={{ flex: 1 }}>
         {notes.map((note) => (
           <div
@@ -74,7 +90,7 @@ function MainPage() {
           </div>
         ))}
       </div>
-      <div><Footer /></div>
+     
     </div>
   );
 }
