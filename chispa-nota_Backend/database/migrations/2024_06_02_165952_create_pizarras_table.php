@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCarpetasTable extends Migration
+class CreatePizarrasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateCarpetasTable extends Migration
      */
     public function up()
     {
-        Schema::create('carpetas', function (Blueprint $table) {
+        Schema::create('pizarras', function (Blueprint $table) {
             $table->id();
+            $table->string('titulo');
+            $table->string('contenido'); 
             $table->unsignedBigInteger('cuenta_id'); 
             $table->foreign('cuenta_id')->references('id')->on('cuentas')->onDelete('cascade');    
-            $table->string('nombre_carp');
-            $table->string('descripcion_carp');
-            $table->date('fecha_creacion_carp');
-            
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ class CreateCarpetasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('carpetas');
+        Schema::dropIfExists('pizarras');
     }
 }

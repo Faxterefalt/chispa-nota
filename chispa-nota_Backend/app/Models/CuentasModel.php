@@ -15,10 +15,10 @@ class CuentasModel extends Model
 
    
     public function carpetas() {
-        return $this->hasMany(Carpeta::class);
+        return $this->hasMany(CarpetasModel::class);
     }
 
     public function recuperacion() {
-        return $this->hasMany(Recuperacion::class);
+        return $this->hasMany(RecuperacionModel::class);
     }
 }

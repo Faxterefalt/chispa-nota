@@ -15,7 +15,7 @@ class RecuperacionModel extends Model
     ,'registro_fallo','estado'];
     public function cuenta()
     {
-        return $this->belongsTo(Cuenta::class);
+        return $this->belongsTo(CuentasModel::class);
     }
     
 }
