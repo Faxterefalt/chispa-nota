@@ -116,6 +116,8 @@ function WhiteBoard({
 
     const canvasImage = canvasRef.current.toDataURL();
     socket.emit("whiteboardData",canvasImage);
+    localStorage.setItem('canvasImage', canvasImage); //imagen de la pizarra
+
   }
   }, [elements]);
 
