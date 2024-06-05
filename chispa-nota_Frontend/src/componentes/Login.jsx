@@ -31,7 +31,7 @@ function Login() {
       const response = await axios.post('http://localhost:8000/api/cuentas/login', credentials);
       console.log(response.data);
       setError('');
-      navigate('/mainpage');
+      navigate('/mainpage', { state: { accountId: response.data.id } });
     } catch (error) {
       setError(error.response ? error.response.data.error : 'Error al iniciar sesión. Por favor, inténtalo de nuevo.');
       console.error('Error:', error.response ? error.response.data : error.message);

@@ -7,7 +7,6 @@ import Login from "./componentes/Login";
 import HomePage from "./componentes/HomePage";
 import SignUp from "./componentes/SignUp";
 import MainPage from "./componentes/MainPage";
-import Tareas from "./componentes/notas-tareas/Tareas";
 import { toast, ToastContainer } from 'react-toastify';
 
 const server = "http://localhost:5000";
@@ -81,7 +80,6 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/mainpage" element={<MainPage />} />
-          <Route path="/tareas" element={<Tareas />} />
           <Route
             path="/pizarra"
             element={
