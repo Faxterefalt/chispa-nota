@@ -27,6 +27,16 @@ function RoomPage({ user, socket,users}) {
       };
   }, [socket]);
 
+  useEffect(() => {
+    if (socket) {
+        // ... rest of the code
+
+        socket.on("clearCanvas", () => {
+            handleClearCanvas();
+        });
+    }
+}, [socket]);
+
   const handleExport = () => {
     const canvas = canvasRef.current;
     if (canvas) {
@@ -207,9 +217,12 @@ function RoomPage({ user, socket,users}) {
             >
               Rehacer</button>
           </div>
-<div className="col-md-2">
-    <button className="btn btn-danger" onClick={handleClearCanvas}>Limpiar Canvas</button>
-    
+          
+          <div className="col-md-2">
+    <button className="btn btn-danger" onClick={() => {
+        handleClearCanvas();
+        socket.emit("clearCanvas"); 
+    }}>Limpiar Canvas</button>
 </div>
 
 <button 

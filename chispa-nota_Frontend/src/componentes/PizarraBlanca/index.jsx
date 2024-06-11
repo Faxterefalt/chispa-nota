@@ -1,8 +1,6 @@
 import { useEffect, useState, useLayoutEffect } from "react";
 import rough from "roughjs";
-
 const roughGenerator = rough.generator();
-
 function WhiteBoard({
   canvasRef, 
   ctxRef, 

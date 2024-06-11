@@ -40,7 +40,7 @@ io.on("connection", (socket) => {
 
     socket.on("whiteboardData", (data) => {
         imgURLGlobal = data;
-        io.to(roomIdGlobal).emit("whiteBoardDataResponse", {
+        socket.broadcast.to(roomIdGlobal).emit("whiteBoardDataResponse", {
             imgURL: data,
         });
     });
@@ -49,6 +49,13 @@ io.on("connection", (socket) => {
         const user = getUser(socket.id);
         if (user) {
             io.to(user.roomId).emit("draw", data);
+        }
+    });
+
+    socket.on("clearCanvas", () => {
+        const user = getUser(socket.id);
+        if (user) {
+            io.to(user.roomId).emit("clearCanvas");
         }
     });
 
