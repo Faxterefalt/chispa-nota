@@ -79,6 +79,7 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/forms" component={Forms} />
           <Route path="/mainpage" element={<MainPage />} />
           <Route
             path="/pizarra"
@@ -87,6 +88,7 @@ const App = () => {
                 uuid={uuid}
                 socket={socket}
                 setUser={setUser}
+                
               />
             }
           />

@@ -31,24 +31,26 @@ function Login() {
       const response = await axios.post('http://localhost:8000/api/cuentas/login', credentials);
       console.log(response.data);
       setError('');
-      navigate('/mainpage', { state: { accountId: response.data.id } });
+      navigate('/mainpage', { state: { accountId: response.data.id } }); // Pasar la ID del usuario como parte del objeto de estado de la ubicación
     } catch (error) {
       setError(error.response ? error.response.data.error : 'Error al iniciar sesión. Por favor, inténtalo de nuevo.');
       console.error('Error:', error.response ? error.response.data : error.message);
     }
   };
-
+  
+  // En el método responseGoogle del componente Login
   const responseGoogle = async (response) => {
     try {
       const serverResponse = await axios.post('http://localhost:8000/api/cuentas/google-login', { code: response.code });
       console.log(serverResponse.data);
       setError('');
-      navigate('/mainpage');
+      navigate(`/mainpage/${serverResponse.data.id}`, { state: { accountId: serverResponse.data.id } });  // Navegar a /mainpage/:idUser con estado
     } catch (error) {
       setError(error.response ? error.response.data.error : 'Error al iniciar sesión con Google. Por favor, inténtalo de nuevo.');
       console.error('Error:', error.response ? error.response.data : error.message);
     }
   };
+      
 
   return (
     <div className="login-container">
