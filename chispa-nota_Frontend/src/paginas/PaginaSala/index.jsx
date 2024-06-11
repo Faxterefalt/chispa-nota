@@ -1,11 +1,12 @@
 import WhiteBoard from "../../componentes/PizarraBlanca";
 import "./index.css";
-import {useState, useRef, useEffect} from "react";
+import { useState, useRef, useEffect } from "react";
 import Chat from "../../componentes/ChatBar/index";
 import Swal from 'sweetalert2';
 
-function RoomPage({ user, socket,users}) {
-  const [userList, setUsers]=useState([]);
+function RoomPage({ user, socket, users }) {
+  const [userList, setUsers] = useState([]);
+  const [userActions, setUserActions] = useState([]);
 
     const canvasRef = useRef(null);
     const ctxRef = useRef(null);
@@ -17,15 +18,49 @@ function RoomPage({ user, socket,users}) {
     const [openedUserTab, setOpenedUserTab]=useState(false);
     const [openedChatTab, setOpenedChatTab]=useState(false);
 
-    useEffect(() => {
-      socket.on("onlineUsers", (numUsers) => {
-          setOnlineUsers(numUsers);
-      });
-  
-      return () => {
-          socket.off("onlineUsers");
-      };
+  useEffect(() => {
+    socket.on("onlineUsers", (numUsers) => {
+      setOnlineUsers(numUsers);
+    });
+
+    socket.on("undo", (data) => {
+      setElements(data.elements);
+      setHistory(data.history);
+    });
+
+    socket.on("redo", (data) => {
+      setElements(data.elements);
+      setHistory(data.history);
+    });
+
+    return () => {
+      socket.off("onlineUsers");
+      socket.off("undo");
+      socket.off("redo");
+    };
   }, [socket]);
+
+  useEffect(() => {
+    if (socket) {
+      socket.on("clearCanvas", () => {
+        handleClearCanvas();
+      });
+    }
+  }, [socket]);
+
+  const logUserAction = (action) => {
+    const timestamp = new Date().toLocaleTimeString();
+    const image = captureCanvasImage();
+    setUserActions(prevActions => [
+      ...prevActions,
+      { user: user.name, action, time: timestamp, image }
+    ]);
+  };
+
+  const captureCanvasImage = () => {
+    const canvas = canvasRef.current;
+    return canvas ? canvas.toDataURL() : null;
+  };
 
   const handleExport = () => {
     const canvas = canvasRef.current;
@@ -35,40 +70,53 @@ function RoomPage({ user, socket,users}) {
     }
   };
 
-    const handleClearCanvas=()=>{
-      const canvas = canvasRef.current;
-      const ctx = canvas.getContext("2d");
-      ctx.fillRectangle="white";
-      ctx.clearRect(
-        0, 
-        0, 
-        canvas.width, 
-        canvas.height);
-  
-  
-      setElements([]);
-    };
-  
-    const deshacer=()=>{
-      setHistory((prevHistory)=>[
-        ...prevHistory, 
-        elements[elements.length-1],
-      ]);
-      setElements(
-        (prevElements)=>prevElements.slice(0, prevElements.length-1)
-      )
-  
-    }
-  
-    const rehacer=()=>{
-      setElements((prevElements)=>[
-        ...prevElements,
-        history[history.length-1]
-      ]);
-      setHistory((prevHistory)=>prevHistory.slice(0, prevHistory.length-1));
-    }
-  
-    return (
+  const handleClearCanvas = () => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
+    ctx.fillStyle = "white";
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    setElements([]);
+    logUserAction("limpió el canvas");
+  };
+
+  const deshacer = () => {
+    const newHistory = [...history, elements[elements.length - 1]];
+    const newElements = elements.slice(0, elements.length - 1);
+    
+    setHistory(newHistory);
+    setElements(newElements);
+
+    logUserAction("deshizo una acción");
+    socket.emit("undo", { elements: newElements, history: newHistory });
+  };
+
+  const rehacer = () => {
+    const newElements = [...elements, history[history.length - 1]];
+    const newHistory = history.slice(0, history.length - 1);
+
+    setElements(newElements);
+    setHistory(newHistory);
+
+    logUserAction("rehizo una acción");
+    socket.emit("redo", { elements: newElements, history: newHistory });
+  };
+
+  useEffect(() => {
+    userActions.forEach((action, index) => {
+      const miniCanvas = document.getElementById(`mini-canvas-${index}`);
+      if (miniCanvas && action.image) {
+        const ctx = miniCanvas.getContext("2d");
+        const img = new Image();
+        img.src = action.image;
+        img.onload = () => {
+          ctx.drawImage(img, 0, 0, miniCanvas.width, miniCanvas.height);
+        };
+      }
+    });
+  }, [userActions]);
+
+  return (
     <div className="row">
       <button 
         type="button" 
@@ -102,30 +150,32 @@ function RoomPage({ user, socket,users}) {
           Chat
       </button>
 
-
-
-      {
-        openedUserTab&&(
-          <div className="position-fixed top-0  h-100 text-white bg-dark" 
-            style={{
-              width:"250px",
-              left:"0%"
-              }}> 
-              <button 
-                type="button" 
-                onClick={()=>setOpenedUserTab(false)}
-                className="btn btn-light btn-block w-100 mt-5">
-                Cerrar
-              </button>
-              
-                <div className="w-100 mt-5 pt-5">
-                {users.map((usr,index)=>(
-                  <p key={index*999} className="my-2 text-center w-100">
-                    {usr.name}{user && user?.userId === usr.userId && " (Tú)"}
-                    </p>
-                ))}
-              
-              </div>
+      {openedUserTab && (
+        <div className="position-fixed top-0 h-100 text-white bg-dark" 
+          style={{ width: "250px", left: "0%" }}
+        > 
+          <button 
+            type="button" 
+            onClick={() => setOpenedUserTab(false)}
+            className="btn btn-light btn-block w-100 mt-5"
+          >
+            Cerrar
+          </button>
+          <div className="w-100 mt-5 pt-5">
+            {users.map((usr, index) => (
+              <p key={index * 999} className="my-2 text-center w-100">
+                {usr.name}{user && user?.userId === usr.userId && " (Tú)"}
+              </p>
+            ))}
+            <div className="mt-5 pt-3">
+              <h5>Timeline de Acciones</h5>
+              {userActions.map((action, index) => (
+                <div key={index} className="mb-3">
+                  <p className="m-0">{action.user} {action.action} a las {action.time}</p>
+                  <canvas id={`mini-canvas-${index}`} width="200" height="100"></canvas>
+                </div>
+              ))}
+            </div>
           </div>
         )
       }
