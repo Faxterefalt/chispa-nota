@@ -167,7 +167,7 @@ function RoomPage({ user, socket, users }) {
                 {usr.name}{user && user?.userId === usr.userId && " (Tú)"}
               </p>
             ))}
-            <div className="mt-5 pt-3">
+            <div className="mt-5 pt-3 timeline-container">
               <h5>Timeline de Acciones</h5>
               {userActions.map((action, index) => (
                 <div key={index} className="mb-3">
