@@ -6,7 +6,7 @@ const { addUser, removeUser, getUser, getUsersInRoom } = require('./utils/users.
 const io = new Server(server);
 
 // Rutas
-app.get("/", (req,res) => {
+app.get("/", (req, res) => {
     res.send("Este es el servidor de la pizarra de chispanota.");
 });
 
@@ -30,7 +30,7 @@ io.on("connection", (socket) => {
             socketId: socket.id
         });
 
-        socket.emit("userIsJoined", { success: true, users });
+        socket.emit("userIsJoined", { success: true, users, isCreator: host });
         socket.broadcast.to(roomId).emit("userJoinedMessageBroadcasted", name);
         socket.broadcast.to(roomId).emit("allUsers", users);
         socket.broadcast.to(roomId).emit("whiteBoardDataResponse", {

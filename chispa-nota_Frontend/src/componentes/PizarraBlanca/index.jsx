@@ -1,6 +1,7 @@
-import { useEffect, useState, useLayoutEffect } from "react";
+import React, { useEffect, useState, useLayoutEffect } from "react";
 import rough from "roughjs";
 const roughGenerator = rough.generator();
+
 function WhiteBoard({
   canvasRef, 
   ctxRef, 
@@ -216,6 +217,10 @@ function WhiteBoard({
       className="border border-dark border-3 h-100 w-100 overflow-hidden"
     >
       <canvas ref={canvasRef} />
+      <button>Limpiar Canvas</button>
+      <button>Rehacer</button>
+      <button>Línea</button>
+      {/* Otros botones */}
     </div>
   );
 }
