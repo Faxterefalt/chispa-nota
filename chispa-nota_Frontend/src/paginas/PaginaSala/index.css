@@ -8,8 +8,8 @@
 }
 
 .timeline-container {
-    max-height: 400px; /* Ajusta esta altura según sea necesario */
+    max-height: 400px; 
     overflow-y: auto;
-    padding-right: 15px; /* Opcional: Añade un pequeño relleno para que el contenido no quede oculto detrás de la scrollbar */
+    padding-right: 15px; 
   }
   
