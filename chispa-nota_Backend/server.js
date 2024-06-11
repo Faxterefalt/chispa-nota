@@ -59,6 +59,20 @@ io.on("connection", (socket) => {
         }
     });
 
+    socket.on("undo", (data) => {
+        const user = getUser(socket.id);
+        if (user) {
+            io.to(user.roomId).emit("undo", data);
+        }
+    });
+
+    socket.on("redo", (data) => {
+        const user = getUser(socket.id);
+        if (user) {
+            io.to(user.roomId).emit("redo", data);
+        }
+    });
+
     socket.on("mensaje", (data) => {
         const { mensaje } = data;
         const user = getUser(socket.id); 
