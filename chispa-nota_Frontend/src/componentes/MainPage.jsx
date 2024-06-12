@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BsTrash } from 'react-icons/bs';
-import axios from 'axios';
+
 import Carpeta from './Carpeta';
 import { useLocation } from 'react-router-dom';
 
@@ -16,8 +16,6 @@ function MainPage() {
   const [accountId, setAccountId] = useState(null);
   const location = useLocation();
 
-
-  const BASE_URL = 'http://127.0.0.1:8000/api'; 
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === 'Delete' && selectedId) {
@@ -34,193 +32,11 @@ function MainPage() {
   useEffect(() => {
     if (location.state && location.state.accountId) {
       setAccountId(location.state.accountId);
+      console.log("ID recibido desde Login:", location.state.accountId);
     }
   }, [location.state]);
 
-  const fetchCarpetas = async () => {
-        try {
-            const response = await axios.get(`${BASE_URL}/carpetas`);
-            return response.data;
-        } catch (error) {
-            console.error('Error fetching carpetas:', error);
-            return [];
-        }
-    };
-    const createCarpeta = async (nuevaCarpeta) => {
-      try {
-          const response = await axios.post(`${BASE_URL}/carpetas`, nuevaCarpeta);
-          return response.data;
-      } catch (error) {
-          console.error('Error creating carpeta:', error);
-          return null;
-      }
-  };
-  const deleteCarpeta = async (id) => {
-    try {
-        const response = await axios.delete(`${BASE_URL}/carpetas/${id}`);
-        return response.data;
-    } catch (error) {
-        console.error('Error deleting carpeta:', error);
-        return null;
-    }
-};
-const fetchColumnas = async () => {
-  try {
-      const response = await axios.get(`${BASE_URL}/columnas`);
-      return response.data;
-  } catch (error) {
-      console.error('Error fetching columnas:', error);
-      return [];
-  }
-};
-
-const createColumna = async (nuevaColumna) => {
-  try {
-      const response = await axios.post(`${BASE_URL}/columnas`, nuevaColumna);
-      return response.data;
-  } catch (error) {
-      console.error('Error creating columna:', error);
-      return null;
-  }
-};
-
-const updateColumna = async (id, columnaActualizada) => {
-  try {
-      const response = await axios.put(`${BASE_URL}/columnas/${id}`, columnaActualizada);
-      return response.data;
-  } catch (error) {
-      console.error('Error updating columna:', error);
-      return null;
-  }
-};
-
-const deleteColumna = async (id) => {
-  try {
-      const response = await axios.delete(`${BASE_URL}/columnas/${id}`);
-      return response.data;
-  } catch (error) {
-      console.error('Error deleting columna:', error);
-      return null;
-  }
-};
-const fetchTareas = async () => {
-  try {
-      const response = await axios.get(`${BASE_URL}/tareas`);
-      return response.data;
-  } catch (error) {
-      console.error('Error fetching tareas:', error);
-      return [];
-  }
-};
-
-const createTarea = async (nuevaTarea) => {
-  try {
-      const response = await axios.post(`${BASE_URL}/tareas`, nuevaTarea);
-      return response.data;
-  } catch (error) {
-      console.error('Error creating tarea:', error);
-      return null;
-  }
-};
-
-const updateTarea = async (id, tareaActualizada) => {
-  try {
-      const response = await axios.put(`${BASE_URL}/tareas/${id}`, tareaActualizada);
-      return response.data;
-  } catch (error) {
-      console.error('Error updating tarea:', error);
-      return null;
-  }
-};
-
-const deleteTarea = async (id) => {
-  try {
-      const response = await axios.delete(`${BASE_URL}/tareas/${id}`);
-      return response.data;
-  } catch (error) {
-      console.error('Error deleting tarea:', error);
-      return null;
-  }
-};
-const fetchNotas = async () => {
-  try {
-      const response = await axios.get(`${BASE_URL}/notas`);
-      return response.data;
-  } catch (error) {
-      console.error('Error fetching notas:', error);
-      return [];
-  }
-};
-
-const createNota = async (nuevaNota) => {
-  try {
-      const response = await axios.post(`${BASE_URL}/notas`, nuevaNota);
-      return response.data;
-  } catch (error) {
-      console.error('Error creating nota:', error);
-      return null;
-  }
-};
-
-const updateNota = async (id, notaActualizada) => {
-  try {
-      const response = await axios.put(`${BASE_URL}/notas/${id}`, notaActualizada);
-      return response.data;
-  } catch (error) {
-      console.error('Error updating nota:', error);
-      return null;
-  }
-};
-
-const deleteNota = async (id) => {
-  try {
-      const response = await axios.delete(`${BASE_URL}/notas/${id}`);
-      return response.data;
-  } catch (error) {
-    console.error('Error deleting nota:', error);
-    return null;
-}
-};
-const fetchListaTareas = async () => {
-  try {
-      const response = await axios.get(`${BASE_URL}/lista_tareas`);
-      return response.data;
-  } catch (error) {
-      console.error('Error fetching lista de tareas:', error);
-      return [];
-  }
-};
-
-const createListaTareas = async (nuevaListaTareas) => {
-  try {
-      const response = await axios.post(`${BASE_URL}/lista_tareas`, nuevaListaTareas);
-      return response.data;
-  } catch (error) {
-      console.error('Error creating lista de tareas:', error);
-      return null;
-  }
-};
-
-const updateListaTareas = async (id, listaTareasActualizada) => {
-  try {
-      const response = await axios.put(`${BASE_URL}/lista_tareas/${id}`, listaTareasActualizada);
-      return response.data;
-  } catch (error) {
-      console.error('Error updating lista de tareas:', error);
-      return null;
-  }
-};
-
-const deleteListaTareas = async (id) => {
-  try {
-      const response = await axios.delete(`${BASE_URL}/lista_tareas/${id}`);
-      return response.data;
-  } catch (error) {
-      console.error('Error deleting lista de tareas:', error);
-      return null;
-  }
-};
-
+  
   const addNote = () => {
     const rect = noteButtonRef.current.getBoundingClientRect();
     setNotes((prevNotes) => [...prevNotes, { id: Math.random(), text: '', x: rect.left, y: rect.bottom }]);
@@ -368,14 +184,18 @@ const deleteListaTareas = async (id) => {
         <div className="header-titulo">
           <h1>Chispanota</h1>
         </div>
+       
       </header>
       <section className="contenedor-flex">
         <div className="contenido">
           {/* Contenido izquierdo */}
+          
         </div>
         <div className="barra-opciones">
           {/* Contenedor de las opciones */}
-          <Link to="/Pizarra"><button className="btn btn-primary">Pizarra</button></Link>
+          <Link to={{ pathname: "/Pizarra", search: `?accountId=${accountId}` }}>
+            <button className="btn btn-primary">Pizarra</button>
+          </Link>
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <Carpeta onCreateFolder={addFolder} />
           </div>

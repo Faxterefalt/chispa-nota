@@ -99,6 +99,7 @@ class CuentasController extends Controller
         if ($user && $request->password == $user->password) {
 
             return response()->json([
+                'id' => $user->id, // Devolver la ID del usuario junto con el mensaje de inicio de sesión exitoso
                 'message' => 'Inicio de sesión exitoso'
             ], 200);
         } else {
