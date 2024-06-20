@@ -40,7 +40,7 @@ io.on("connection", (socket) => {
 
     socket.on("whiteboardData", (data) => {
         imgURLGlobal = data;
-        socket.broadcast.to(roomIdGlobal).emit("whiteBoardDataResponse", {
+        io.to(roomIdGlobal).emit("whiteBoardDataResponse", {
             imgURL: data,
         });
     });
@@ -56,6 +56,7 @@ io.on("connection", (socket) => {
         const user = getUser(socket.id);
         if (user) {
             io.to(user.roomId).emit("clearCanvas");
+            io.to(user.roomId).emit("logAction", { action: "limpió el canvas", user: user.name });
         }
     });
 
@@ -63,6 +64,7 @@ io.on("connection", (socket) => {
         const user = getUser(socket.id);
         if (user) {
             io.to(user.roomId).emit("undo", data);
+            io.to(user.roomId).emit("logAction", { action: "deshizo una acción", user: user.name });
         }
     });
 
@@ -70,6 +72,7 @@ io.on("connection", (socket) => {
         const user = getUser(socket.id);
         if (user) {
             io.to(user.roomId).emit("redo", data);
+            io.to(user.roomId).emit("logAction", { action: "rehizo una acción", user: user.name });
         }
     });
 

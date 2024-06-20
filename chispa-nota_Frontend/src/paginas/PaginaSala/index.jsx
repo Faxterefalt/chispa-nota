@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 function RoomPage({ user, socket, users }) {
   const [userList, setUsers] = useState([]);
   const [userActions, setUserActions] = useState([]);
+  
 
   const canvasRef = useRef(null);
   const ctxRef = useRef(null);
@@ -26,6 +27,9 @@ function RoomPage({ user, socket, users }) {
     socket.on("undo", (data) => {
       setElements(data.elements);
       setHistory(data.history);
+      if (!localAction) {
+        logUserAction("deshizo una acción", data.user);
+      }
     });
 
     socket.on("redo", (data) => {
@@ -33,27 +37,45 @@ function RoomPage({ user, socket, users }) {
       setHistory(data.history);
     });
 
+    socket.on("clearCanvas", () => {
+      handleClearCanvas(true);
+    });
+
+    socket.on("draw", (data) => {
+      setElements(prevElements => [...prevElements, data]);
+    });
+
+    socket.on("whiteBoardDataResponse", (data) => {
+      const img = new Image();
+      img.src = data.imgURL;
+      img.onload = () => {
+        const canvas = canvasRef.current;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0);
+      };
+    });
+
+    socket.on("logAction", ({ action, user }) => {
+      logUserAction(action, user);
+    });
+
     return () => {
       socket.off("onlineUsers");
       socket.off("undo");
       socket.off("redo");
+      socket.off("clearCanvas");
+      socket.off("draw");
+      socket.off("whiteBoardDataResponse");
+      socket.off("logAction");
     };
   }, [socket]);
 
-  useEffect(() => {
-    if (socket) {
-      socket.on("clearCanvas", () => {
-        handleClearCanvas();
-      });
-    }
-  }, [socket]);
-
-  const logUserAction = (action) => {
+  const logUserAction = (action, userName) => {
     const timestamp = new Date().toLocaleTimeString();
     const image = captureCanvasImage();
     setUserActions(prevActions => [
       ...prevActions,
-      { user: user.name, action, time: timestamp, image }
+      { user: userName, action, time: timestamp, image }
     ]);
   };
 
@@ -70,14 +92,17 @@ function RoomPage({ user, socket, users }) {
     }
   };
 
-  const handleClearCanvas = () => {
+  const handleClearCanvas = (isRemote = false) => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     ctx.fillStyle = "white";
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     setElements([]);
-    logUserAction("limpió el canvas");
+    if (!isRemote) {
+      logUserAction("limpió el canvas", user.name);
+      socket.emit("clearCanvas");
+    }
   };
 
   const deshacer = () => {
@@ -87,7 +112,7 @@ function RoomPage({ user, socket, users }) {
     setHistory(newHistory);
     setElements(newElements);
 
-    logUserAction("deshizo una acción");
+    logUserAction("deshizo una acción", user.name);
     socket.emit("undo", { elements: newElements, history: newHistory });
   };
 
@@ -98,7 +123,7 @@ function RoomPage({ user, socket, users }) {
     setElements(newElements);
     setHistory(newHistory);
 
-    logUserAction("rehizo una acción");
+    logUserAction("rehizo una acción", user.name);
     socket.emit("redo", { elements: newElements, history: newHistory });
   };
 
@@ -302,6 +327,7 @@ function RoomPage({ user, socket, users }) {
           socket={socket}
         />
       </div>
+      
     </div>
   );
 }
