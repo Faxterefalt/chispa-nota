@@ -18,8 +18,10 @@ function RoomPage({ user, socket, users }) {
   const [history, setHistory] = useState([]);
   const [openedUserTab, setOpenedUserTab] = useState(false);
   const [openedChatTab, setOpenedChatTab] = useState(false);
+  const [isSharing, setIsSharing] = useState(true);
 
   useEffect(() => {
+    if (!isSharing) return;
     socket.on("onlineUsers", (numUsers) => {
       setOnlineUsers(numUsers);
     });
@@ -68,7 +70,7 @@ function RoomPage({ user, socket, users }) {
       socket.off("whiteBoardDataResponse");
       socket.off("logAction");
     };
-  }, [socket]);
+  }, [socket, isSharing]);
 
   const logUserAction = (action, userName) => {
     const timestamp = new Date().toLocaleTimeString();
@@ -140,12 +142,27 @@ function RoomPage({ user, socket, users }) {
       }
     });
   }, [userActions]);
+  
+
+  const handleStopSharing = () => {
+    setIsSharing(false);
+    socket.disconnect();
+  
+    Swal.fire({
+      title: 'Has detenido la colaboración compartida.',
+      text: "Ya no recibirás actualizaciones de otros usuarios.",
+      icon: 'success',
+      confirmButtonText: 'OK'
+    });
+  };
+  
+  
 
   return (
     <div className="row">
       <button 
         type="button" 
-        className="btn btn-dark"
+        className="btn btn-dark btn-usuarios"
         style={{
           display: "block",
           position: "absolute",
@@ -294,27 +311,49 @@ function RoomPage({ user, socket, users }) {
             Limpiar Canvas
           </button>
         </div>
-        <button 
-          className="btn ml-2" 
-          style={{backgroundColor: 'purple', color: 'white'}}
-          onClick={() => {
+            <button 
+            className="btn ml-2" 
+            style={{ backgroundColor: 'purple', color: 'white' }}
+            onClick={() => {
             Swal.fire({
-              title: '¿Quieres exportar la imagen a tu espacio de trabajo?',
-              showDenyButton: true,
-              confirmButtonText: `Exportar`,
-              denyButtonText: `Seguir Editando`,
-            }).then((result) => {
-              if (result.isConfirmed) {
-                handleExport();
-                window.location.href = '/mainpage';
-              }
-            })
-          }}
-        >
-          Mover a Principal
-        </button>
-      </div>
+            title: '¿Quieres detener la colaboración compartida?',
+            text: "Una vez detenido, ya no recibirás actualizaciones de otros usuarios.",
+            showDenyButton: true,
+            confirmButtonText: `Detener`,
+            denyButtonText: `Seguir colaborando`,
+          }).then((result) => {
+            if (result.isConfirmed) {
+              handleStopSharing();
+            }
+          });
+        }}
+      >
+        Detener compartido
+      </button>
 
+      </div>
+      <div className="col-md-10 mx-auto mt-3">
+  <div id="timelineCarousel" className="carousel slide" data-bs-ride="carousel">
+    <div className="carousel-inner">
+      {userActions.map((action, index) => (
+        <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
+          <div className="d-flex flex-column align-items-center">
+            <p>{action.user} {action.action} a las {action.time}</p>
+            <canvas id={`mini-canvas-${index}`} width="200" height="100"></canvas>
+          </div>
+        </div>
+      ))}
+    </div>
+    <button className="carousel-control-prev" type="button" data-bs-target="#timelineCarousel" data-bs-slide="prev">
+      <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span className="visually-hidden">Previous</span>
+    </button>
+    <button className="carousel-control-next" type="button" data-bs-target="#timelineCarousel" data-bs-slide="next">
+      <span className="carousel-control-next-icon" aria-hidden="true"></span>
+      <span className="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
       <div className="col-md-10 mx-auto mt-1 canvas-box">
         <WhiteBoard 
           canvasRef={canvasRef} 

@@ -12,4 +12,71 @@
     overflow-y: auto;
     padding-right: 15px; 
   }
+
+/* Estilo para los botones de navegación del carrusel */
+.carousel-control-prev,
+.carousel-control-next {
+  filter: invert(1); /* Invertir colores para mejor visibilidad */
+  width: 50px;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+  border-radius: 50%; /* Bordes redondeados */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  width: 25px;
+  height: 25px;
+}
+
+.carousel-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #f8f9fa; /* Fondo claro para contraste */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.carousel-item p {
+  font-size: 1.1rem;
+  color: #333; /* Texto oscuro para contraste */
+}
+
+.carousel-item canvas {
+  border: 2px solid #dee2e6; /* Borde para el canvas */
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.carousel-indicators [data-bs-target] {
+  background-color: #007bff; /* Color azul para los indicadores */
+}
+
+.carousel-indicators .active {
+  background-color: #0056b3; /* Color azul oscuro para el indicador activo */
+}
+
+.carousel-inner {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.btn-usuarios {
+    z-index: 1050;
+  }
   
+
+  .carousel {
+    z-index: 1000;
+  }
+  
+  
+  .position-fixed {
+    z-index: 1060;
+  }
